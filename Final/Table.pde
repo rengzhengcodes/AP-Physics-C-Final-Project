@@ -12,4 +12,16 @@ public class Table {
 		this.floorFrictionCoeff = floorFrictionCoeff;
 		this.mfield = mfiled;
 	}
+
+	public MField getMfield() {
+		return mefield;
+	}
+
+	public float getWallFCoeff() {
+		return wallFrictionCoeff;
+	}
+
+	public float getFloorFCoeff() {
+		return floorFrictionCoeff;
+	}
 }
