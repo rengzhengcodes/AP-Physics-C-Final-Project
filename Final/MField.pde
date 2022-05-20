@@ -18,4 +18,10 @@ public class MField {
 	public MField(float strength, int[] position) {
 		this(new PVector(0, 0, strength), position);
 	}
+
+	public Force affectCharge(Velocity v, float charge) {
+		PVector velocityVec = v.getVec();
+		PVector resultant = charge * velocityVec.cross(this.field);
+		return new Force(resultant);
+	}
 }
