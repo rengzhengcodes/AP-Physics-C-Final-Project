@@ -1,4 +1,4 @@
-public class VectorPhysics {
+public interface VectorPhysics {
 	private String units; // The units of the vector (for diagnostic purposes)
 	private PVector vec; // The vector of the physics thing (direction + magnitude)
 
