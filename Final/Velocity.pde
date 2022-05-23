@@ -8,4 +8,8 @@ public class Velocity extends VectorPhysics {
 	public Velocity(PVector vec) {
 		super(vec);
 	}
+
+	public void add(Velocity vec) {
+		this.vec.add(vec);
+	}
 }

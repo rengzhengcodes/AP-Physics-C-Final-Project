@@ -1,4 +1,4 @@
-public class VectorPhysics {
+public abstract class VectorPhysics {
 	private final String units; // The units of the vector (for diagnostic purposes)
 	private PVector vec; // The vector of the physics thing (direction + magnitude)
 
@@ -9,6 +9,8 @@ public class VectorPhysics {
 	public VectorPhysics(PVector vec) {
 		this.vec = vec;
 	}
+
+	public abstract void add();
 
 	public String getUnits() {
 		return this.units;
