@@ -3,7 +3,7 @@ public class Ball {
 	private final int size = 1;
 	private float charge;
 	private Velocity velocity;
-	private float[] pos = float[2];
+	private Position pos;
 
 	/**
 		*@param charge The charge of the ball in Coulombs.
@@ -13,5 +13,5 @@ public class Ball {
 		this.velocity = new Velocity(0, 0);
 	}
 
-	
+
 }
