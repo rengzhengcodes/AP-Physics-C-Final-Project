@@ -12,4 +12,8 @@ public class Velocity extends VectorPhysics {
 	public void add(Velocity vec) {
 		this.vec.add(vec);
 	}
+
+	public void accelerate(Acceleration	vec) {
+		this.vec.add(vec);
+	}
 }
