@@ -20,5 +20,11 @@ public class Ball {
 		Velocity side = velocity.scale(dirVector.cross(velocity)/dirVector.mag()/velocity.mag());
 		side.scale(-1);
 		velocity.add(side);
+		(other.velocity).set(velocity);
+		side.scale(-1);
+		velocity.set(side);
+		temp.scale(-1);
+		(other.velocity).add(temp);
+		velocity.add(temp);
 	}
 }
