@@ -11,7 +11,5 @@ public class Ball {
 	public Ball(float charge) {
 		this.charge = charge;
 		this.velocity = new Velocity(0, 0);
-	}
-
-
+	}	
 }
