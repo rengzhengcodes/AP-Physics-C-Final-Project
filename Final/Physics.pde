@@ -5,7 +5,7 @@ public class Physics {
 	public final int pixelsPerMeter = 296;
 
 	static abstract class VectorPhysics {
-		private final String units; // The units of the vector (for diagnostic purposes)
+		private abstract final String units; // The units of the vector (for diagnostic purposes)
 		private PVector vec; // The vector of the physics thing (direction + magnitude)
 
 		public VectorPhysics(int x, int y) {
@@ -28,6 +28,8 @@ public class Physics {
 	}
 
 	static class Position extends VectorPhysics {
+		private final String units = "m";
+		
 		public Position(int x, int y) {
 			super(x, y);
 		}
@@ -46,7 +48,7 @@ public class Physics {
 	}
 
 	static class Velocity extends VectorPhysics {
-		this.units = "m/s";
+		private final String units = "m/s";
 
 		public Velocity(int x, int y) {
 			super(x, y);
@@ -74,6 +76,8 @@ public class Physics {
 	}
 
 	static class Acceleration extends VectorPhysics {
+		private final String units = "m/s^2";
+
 		public Acceleration(int x, int y) {
 			super(x, y);
 		}
@@ -88,7 +92,7 @@ public class Physics {
 	}
 
 	static class Force extends VectorPhysics {
-		this.units = "N";
+		private final String units = "N";
 
 		public Force(PVector vec) {
 			super(vec);
