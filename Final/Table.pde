@@ -9,21 +9,21 @@ public class Table {
 		*@param wallFrictionCoeff The coefficient of friction to the wall.
 		*@param floorFrictionCoeff The coefficient of friction of the floor.
 	**/
-	public table(float wallFrictionCoeff, float floorFrictionCoeff, MField mfield) {
+	public Table(float wallFrictionCoeff, float floorFrictionCoeff, MField mfield) {
 		this.wallFrictionCoeff = wallFrictionCoeff;
 		this.floorFrictionCoeff = floorFrictionCoeff;
-		this.mfield = mfiled;
+		this.mfield = mfield;
 	}
 
 	public MField getMfield() {
-		return mefield;
+		return this.mfield;
 	}
 
 	public float getWallFCoeff() {
-		return wallFrictionCoeff;
+		return this.wallFrictionCoeff;
 	}
 
 	public float getFloorFCoeff() {
-		return floorFrictionCoeff;
+		return this.floorFrictionCoeff;
 	}
 }
