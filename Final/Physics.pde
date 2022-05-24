@@ -1,6 +1,9 @@
 import java.util.*;
 
 public class Physics {
+	public final Acceleration g = new Acceleration(new PVector(0, 0, 9.81));
+	
+
 	static abstract class VectorPhysics {
 		private final String units; // The units of the vector (for diagnostic purposes)
 		private PVector vec; // The vector of the physics thing (direction + magnitude)
