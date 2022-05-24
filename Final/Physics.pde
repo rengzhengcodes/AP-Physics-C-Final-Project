@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Physics {
 	public final Acceleration g = new Acceleration(new PVector(0, 0, 9.81));
-	public final int pixelsPerMeter = 296;
+	public static final int pixelsPerMeter = 296;
 
 	static abstract class VectorPhysics {
 		private abstract final String units; // The units of the vector (for diagnostic purposes)
@@ -29,7 +29,7 @@ public class Physics {
 
 	static class Position extends VectorPhysics {
 		private final String units = "m";
-		
+
 		public Position(int x, int y) {
 			super(x, y);
 		}
