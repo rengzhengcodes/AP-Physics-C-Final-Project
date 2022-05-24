@@ -13,6 +13,8 @@ public class Ball {
 		this.velocity = new Velocity(0, 0);
 	}
 	static void collide (Ball other) {
-	
+		Velocity temp = (other.velocity).copy();
+		temp.scale(-1);
+		velocity.add(other.velocity);
 	}
 }
