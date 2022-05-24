@@ -62,6 +62,14 @@ public class Physics {
 		public void accelerate(Acceleration	vec) {
 			this.vec.add(vec);
 		}
+
+		public void scale(float m) {
+			this.vec.mult(m);
+		}
+
+		public Velocity copy() {
+			return new Velocity(this.vec.copy());
+		}
 	}
 
 	static class Acceleration extends VectorPhysics {
