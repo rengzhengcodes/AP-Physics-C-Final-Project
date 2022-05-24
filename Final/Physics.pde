@@ -92,8 +92,9 @@ public class Physics {
 
 	/**
 		*@param m Mass of object in kg.
+		*@return Normal force
 	**/
-	public static Force getGravity(float m) {
+	public static Force getGravityForce(float m) {
 		return new Force(PVector.mult(m, g.getVec()));
 	}
 }
