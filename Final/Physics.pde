@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Physics {
 	public final Acceleration g = new Acceleration(new PVector(0, 0, 9.81));
-	
 
 	static abstract class VectorPhysics {
 		private final String units; // The units of the vector (for diagnostic purposes)
@@ -91,4 +90,10 @@ public class Physics {
 		}
 	}
 
+	/**
+		*@param m Mass of object in kg.
+	**/
+	public static Force getGravity(float m) {
+		return new Force(PVector.mult(m, g.getVec()));
+	}
 }
