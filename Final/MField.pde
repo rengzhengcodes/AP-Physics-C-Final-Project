@@ -19,9 +19,9 @@ public class MField {
 		this(new PVector(0, 0, strength), position);
 	}
 
-	public Force affectCharge(Velocity v, float charge) {
+	public Physics.Force affectCharge(Physics.Velocity v, float charge) {
 		PVector velocityVec = v.getVec();
-		PVector resultant = charge * velocityVec.cross(this.field);
-		return new Force(resultant);
+		PVector resultant = velocityVec.cross(this.field).mult(charge);
+		return new Physics.Force(resultant);
 	}
 }
