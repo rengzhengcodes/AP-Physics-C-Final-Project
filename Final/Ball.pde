@@ -1,6 +1,6 @@
 public class Ball {
 	private final int mass = 1;
-	private final int size = 1;
+	private final int size = 0.061;
 	private float charge;
 	private Velocity velocity;
 	private Position pos;
@@ -11,5 +11,8 @@ public class Ball {
 	public Ball(float charge) {
 		this.charge = charge;
 		this.velocity = new Velocity(0, 0);
-	}	
+	}
+	static void collide (Ball other) {
+	
+	}
 }
