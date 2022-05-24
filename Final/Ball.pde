@@ -15,6 +15,6 @@ public class Ball {
 	static void collide (Ball other) {
 		Velocity temp = (other.velocity).copy();
 		temp.scale(-1);
-		velocity.add(other.velocity);
+		velocity.add(temp);
 	}
 }
