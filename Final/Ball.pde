@@ -18,5 +18,7 @@ public class Ball {
 		velocity.add(temp);
 		Position dirVector = new Position(other.pos.getX()-pos.getX(), other.pos.getY()-pos.getY());
 		Velocity side = velocity.scale(dirVector.cross(velocity)/dirVector.mag()/velocity.mag());
+		side.scale(-1);
+		velocity.add(side);
 	}
 }
