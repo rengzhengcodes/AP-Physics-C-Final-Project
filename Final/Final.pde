@@ -1,1 +1,1 @@
-// !!!!!Canvas max size 800x800!!!!!!
+// !!!!!Canvas max size 800x1400!!!!!!
