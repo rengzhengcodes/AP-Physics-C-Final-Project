@@ -12,6 +12,7 @@ public class Table {
 		*@param xsize The length of the table
 		*@param ysize The width of the table
 	**/
+	//For the table with magnetic field and w. / without obstacles
 	public table(float wallFrictionCoeff, float floorFrictionCoeff, MField mfield, float xsize, float ysize) {
 		this.wallFrictionCoeff = wallFrictionCoeff;
 		this.floorFrictionCoeff = floorFrictionCoeff;
@@ -19,6 +20,7 @@ public class Table {
 		this.xsize = xsize;
 		this.ysize = ysize;
 	}
+	//For the generic pool table
 	public table(float wallFrictionCoeff, float floorFrictionCoeff, float xsize, float ysize) {
 		this.wallFrictionCoeff = wallFrictionCoeff;
 		this.floorFrictionCoeff = floorFrictionCoeff;
