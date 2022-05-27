@@ -28,7 +28,7 @@ public class Table {
 		this.xsize = xsize;
 		this.ysize = ysize;
 	}
-
+	
 	public MField getMfield() {
 		return mefield;
 	}
