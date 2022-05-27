@@ -20,7 +20,7 @@ public class EField {
 	}
 	
 	public Force affectCharge(float charge) {
-		PVector resultant = field.scale(charge);
+		PVector resultant = field.mult(charge);
 		return new Force(resultant);
 	}
 }
