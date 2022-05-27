@@ -18,4 +18,9 @@ public class EField {
 	public EField(float x, float y, int[] position) {
 		this(new PVector(x, y), position);
 	}
+	
+	public Force affectCharge(float charge) {
+		PVector resultant = field.scale(charge);
+		return new Force(resultant);
+	}
 }
