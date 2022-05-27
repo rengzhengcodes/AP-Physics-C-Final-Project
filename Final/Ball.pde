@@ -27,7 +27,7 @@ public class Ball {
 		(other.velocity).add(temp);
 		velocity.add(temp);
 	}
-	static void collide (Wall wall) {
+	static void collide (Obstacle obstacle) {
 		
 	}
 }
