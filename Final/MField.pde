@@ -10,6 +10,9 @@ public class MField {
 		this.field = field;
 		this.position = position;
 	}
+	public MField(PVector field) {
+		this.field = field;
+	}
 
 	/**
 		*@param strength The strength of the field
