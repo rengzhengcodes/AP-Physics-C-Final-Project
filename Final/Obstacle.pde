@@ -8,8 +8,11 @@ public class Obstacle {
 
 	/**
 		*@param PShape The shape of the obstacle (probably between rectangle and ball)
-		*@param xpos The xpos of the table
-		*@param ypos The ypos of the table
+		*@param length The length of the obstacle (if rectangle)
+		*@param width The width of the obstacle (if rectangle)
+		*@param radius The radius of the obstacle (if circle)
+		*@param xpos The xpos of the obstacle
+		*@param ypos The ypos of the obstacle
 	**/
 	
 	public Obstacle(PShape pshape, float radius, float xpos, float ypos) {
