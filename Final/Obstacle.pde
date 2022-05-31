@@ -53,4 +53,8 @@ public class Obstacle {
 	public float getWidth() {
 		return width;
 	}
+	
+	public int getKind() {
+		return pshape.getKind();
+	}
 }
