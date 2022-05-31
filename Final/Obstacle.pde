@@ -22,31 +22,31 @@ public class Obstacle {
 		this(obsFrictionCoeff, pshape, length, width, xpos, ypos);
 	}
 	
-	float getObsFrictionCoeff() {
+	public float getObsFrictionCoeff() {
 		return obsFrictionCoeff;
 	}
 	
-	PShape getPShape() {
+	public PShape getPShape() {
 		return pshape;
 	}
 	
-	float getXPos() {
+	public float getXPos() {
 		return xpos;
 	}
 	
-	float getYPos() {
+	public float getYPos() {
 		return ypos;
 	}
 	
-	float getRadius() {
+	public float getRadius() {
 		return radius;
 	}
 	
-	float getLength() {
+	public float getLength() {
 		return length;
 	}
 	
-	float getWidth() {
+	public float getWidth() {
 		return width;
 	}
 }
