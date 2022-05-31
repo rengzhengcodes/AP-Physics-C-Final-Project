@@ -11,18 +11,14 @@ public class Table {
 		*@param ysize The width of the table
 	**/
 	//For the table with magnetic field and w. / without obstacles
-	public table(float floorFrictionCoeff, MField mfield, float xsize, float ysize) {
+	public Table(float floorFrictionCoeff, MField mfield) {
 		this.floorFrictionCoeff = floorFrictionCoeff;
-		this.mfield = mfiled;
-		this.xsize = xsize;
-		this.ysize = ysize;
+		this.mfield = mfield;
 	}
 	//For the generic pool table
-	public table(float floorFrictionCoeff, float xsize, float ysize) {
+	public Table(float floorFrictionCoeff) {
 		this.floorFrictionCoeff = floorFrictionCoeff;
-		this.mfield = new Mfield(new PVector(0,0));
-		this.xsize = xsize;
-		this.ysize = ysize;
+		this.mfield = new MField(new PVector(0,0));
 	}
 
 	public MField getMfield() {
@@ -31,11 +27,5 @@ public class Table {
 
 	public float getFloorFCoeff() {
 		return this.floorFrictionCoeff;
-	}
-	public float xSize() {
-		return xsize;
-	}
-	public float ySize() {
-		return ysize;
 	}
 }

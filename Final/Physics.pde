@@ -7,7 +7,7 @@ public static class Physics {
 	static abstract class VectorPhysics {
 		private final String units = null;
 		private PVector vec;
-		public VectorPhysics(int x, int y) {
+		public VectorPhysics(float x, float y) {
 			this.vec = new PVector(x, y);
 		}
 
@@ -22,13 +22,25 @@ public static class Physics {
 		public PVector getVec() {
 			return this.vec;
 		}
+
+		public float mag() {
+			return this.vec.mag();
+		}
+
+		public float getX() {
+			return this.vec.x;
+		}
+
+		public float getY() {
+			return this.vec.y;
+		}
 	}
 
 	static class Position extends VectorPhysics {
 		private final String units = "m";
 		private PVector vec;
 
-		public Position(int x, int y) {
+		public Position(float x, float y) {
 			super(x, y);
 		}
 

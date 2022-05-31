@@ -19,8 +19,8 @@ public class EField {
 		this(new PVector(x, y), position);
 	}
 	
-	public Force affectCharge(float charge) {
+	public Physics.Force affectCharge(float charge) {
 		PVector resultant = field.mult(charge);
-		return new Force(resultant);
+		return new Physics.Force(resultant);
 	}
 }
