@@ -16,14 +16,14 @@ public class Obstacle {
 	**/
 	
 	public Obstacle(PShape pshape, float radius, float xpos, float ypos) {
-		this.pshape = shape;
+		this.pshape = pshape;
 		this.radius = radius;
 		this.xpos = xpos;
 		this.ypos = ypos;
 	}
 	
 	public Obstacle(PShape pshape, float length, float width, float xpos, float ypos) {
-		this.pshape = shape;
+		this.pshape = pshape;
 		this.length = length;
 		this.width = width;
 		this.xpos = xpos;
