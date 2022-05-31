@@ -55,6 +55,7 @@ public class Obstacle {
 	}
 	
 	public int getKind() {
+		//should return either RECT or ELLIPSE
 		return pshape.getKind();
 	}
 }
