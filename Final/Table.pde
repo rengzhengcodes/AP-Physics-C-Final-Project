@@ -1,8 +1,8 @@
 public class Table {
 	private float floorFrictionCoeff;
 	private MField mfield;
-	public static final float width = 2.7;
-	public static final float length = 1.4;
+	public static final float length = 2.7;
+	public static final float width = 1.4;
 
 	/**
 		*@param floorFrictionCoeff The coefficient of friction of the floor.
@@ -27,5 +27,13 @@ public class Table {
 
 	public float getFloorFCoeff() {
 		return this.floorFrictionCoeff;
+	}
+	
+	public float getWidth() {
+		return width;
+	}
+	
+	public float getLength() {
+		return length;
 	}
 }

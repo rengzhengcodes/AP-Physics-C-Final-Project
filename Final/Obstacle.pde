@@ -1,5 +1,4 @@
 public class Obstacle {
-	private float obsFrictionCoeff;
 	private PShape pshape;
 	private float xpos;
 	private float ypos;
@@ -8,45 +7,50 @@ public class Obstacle {
 	private float width;
 
 	/**
-		*@param obsFrictionCoeff The coefficient of friction to the obstacle.
 		*@param PShape The shape of the obstacle (probably between rectangle and ball)
-		*@param xpos The xpos of the table
-		*@param ypos The ypos of the table
+		*@param length The length of the obstacle (if rectangle)
+		*@param width The width of the obstacle (if rectangle)
+		*@param radius The radius of the obstacle (if circle)
+		*@param xpos The xpos of the obstacle
+		*@param ypos The ypos of the obstacle
 	**/
 	
-	public Obstacle(float obsFrictionCoeff, PShape pshape, float radius, float xpos, float ypos) {
-		this(obsFrictionCoeff, pshape, radius, xpos, ypos);
+	public Obstacle(PShape pshape, float radius, float xpos, float ypos) {
+		this.pshape = shape;
+		this.radius = radius;
+		this.xpos = xpos;
+		this.ypos = ypos;
 	}
 	
-	public Obstacle(float obsFrictionCoeff, PShape pshape, float length, float width, float xpos, float ypos) {
-		this(obsFrictionCoeff, pshape, length, width, xpos, ypos);
+	public Obstacle(PShape pshape, float length, float width, float xpos, float ypos) {
+		this.pshape = shape;
+		this.length = length;
+		this.width = width;
+		this.xpos = xpos;
+		this.ypos = ypos;
 	}
 	
-	float getObsFrictionCoeff() {
-		return obsFrictionCoeff;
-	}
-	
-	PShape getPShape() {
+	public PShape getPShape() {
 		return pshape;
 	}
 	
-	float getXPos() {
+	public float getXPos() {
 		return xpos;
 	}
 	
-	float getYPos() {
+	public float getYPos() {
 		return ypos;
 	}
 	
-	float getRadius() {
+	public float getRadius() {
 		return radius;
 	}
 	
-	float getLength() {
+	public float getLength() {
 		return length;
 	}
 	
-	float getWidth() {
+	public float getWidth() {
 		return width;
 	}
 }
