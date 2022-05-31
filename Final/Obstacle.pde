@@ -1,6 +1,6 @@
 public class Obstacle {
 	private float obsFrictionCoeff;
-	private float PShape;
+	private PShape pshape;
 	private float xpos;
 	private float ypos;
 
@@ -11,5 +11,23 @@ public class Obstacle {
 		*@param ypos The ypos of the table
 	**/
 	
-
+	public Obstacle(float obsFrictionCoeff, PShape pshape, float xpos, float ypos) {
+		this(obsFrictionCoeff, pshape, xpos, ypos);
+	}
+	
+	float getObsFrictionCoeff() {
+		return obsFrictionCoeff;
+	}
+	
+	PShape getPShape() {
+		return pshape;
+	}
+	
+	float getXPos() {
+		return xpos;
+	}
+	
+	float getYPos() {
+		return ypos;
+	}
 }
