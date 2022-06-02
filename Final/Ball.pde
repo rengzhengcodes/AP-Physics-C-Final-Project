@@ -17,18 +17,27 @@ public class Ball {
 		temp.scale(-1);
 		velocity.add(temp);
 		Physics.Position dirVector = new Physics.Position(other.pos.getX()-pos.getX(), other.pos.getY()-pos.getY());
-		Physics.Velocity side = velocity.copy();
-		side.scale(dirVector.getVec().dot(velocity.getVec())/dirVector.mag()/velocity.mag());
-		side.scale(-1);
-		velocity.add(side);
-		(other.velocity) = velocity.copy();
-		side.scale(-1);
-		velocity = side.copy();
+		Physics.Velocity unitDir = new Velocity(dirVector.copy());
+		dirVector.normalize();
+		unitDir.scale(dirVector.getVec().dot(unitDir.getVec()));
+		(other.velocity) = unitDir.copy();
+		unitDir.scale(-1);
+		velocity.add(unitDir);
 		temp.scale(-1);
 		(other.velocity).add(temp);
 		velocity.add(temp);
 	}
 	void collide (Obstacle obstacle) {
-
+		int shape = obstacle.getKind();
+		if (shape==ELLIPSE) {
+			Physics.Position dirVector = new Physics.Position(obstacle.getXPos()-pos.getX(), obstacle.getYPos()-pos.getY());
+			Physics.Velocity unitDir = new Velocity(dirVector.copy());
+			unitDir.normalize();
+			unitDir.scale(dirVector.getVec().dot(unitDir.getVec()));
+			unitDir.scale(-2);
+			velocity.add(unitDir);
+		} else {
+			
+		}
 	}
 }
