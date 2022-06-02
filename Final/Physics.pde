@@ -2,7 +2,7 @@ import java.util.*;
 
 public static class Physics {
 	public static final Acceleration g = new Acceleration(new PVector(0, 0, 9.81));
-	public static final int pixelsPerMeter = 296;
+	public static final float pixelsPerMeter = 1400 / 2.7;
 
 	static abstract class VectorPhysics {
 		private final String units = null;
