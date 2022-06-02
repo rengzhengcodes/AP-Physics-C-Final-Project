@@ -4,3 +4,10 @@ void setup() {
 	size(1400, 700);
 	frameRate(120);
 }
+
+void draw() {
+	PImage tableImage = loadImage("Pool Table.png");
+	tableImage.resize(width, height);
+	imageMode(CORNER);
+	image(tableImage, 0, 0);
+}
