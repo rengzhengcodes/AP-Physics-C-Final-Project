@@ -37,7 +37,11 @@ public class Ball {
 			unitDir.scale(-2);
 			velocity.add(unitDir);
 		} else {
-			
+			Physics.Velocity unitDir;
+			//Do stuff to determine direction of normal
+			unitDir.scale(velocity.getVec().dot(unitDir.getVec()));
+			unitDir.scale(-2);
+			velocity.add(unitDir);
 		}
 	}
 }
