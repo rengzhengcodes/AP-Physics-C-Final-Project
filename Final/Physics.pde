@@ -58,6 +58,9 @@ public static class Physics {
 		public void move(Velocity vec) {
 			this.vec.add(vec.getVec());
 		}
+		public Position copy() {
+			return new Position(this.vec.copy());
+		}
 	}
 
 	static class Velocity extends VectorPhysics {
