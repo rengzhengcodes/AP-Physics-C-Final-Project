@@ -34,6 +34,9 @@ public static class Physics {
 		public float getY() {
 			return this.vec.y;
 		}
+		public void normalize() {
+			this.vec.normalize();
+		}
 	}
 
 	static class Position extends VectorPhysics {
