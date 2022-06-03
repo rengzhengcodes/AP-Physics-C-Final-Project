@@ -17,7 +17,7 @@ public class Ball {
 		temp.scale(-1);
 		velocity.add(temp);
 		Physics.Position dirVector = new Physics.Position(other.pos.getX()-pos.getX(), other.pos.getY()-pos.getY());
-		Physics.Velocity unitDir = new Velocity(dirVector.copy());
+		Physics.Velocity unitDir = new Physics.Velocity(dirVector.getVec().copy());
 		dirVector.normalize();
 		unitDir.scale(dirVector.getVec().dot(unitDir.getVec()));
 		(other.velocity) = unitDir.copy();
@@ -31,7 +31,7 @@ public class Ball {
 		int shape = obstacle.getKind();
 		if (shape==ELLIPSE) {
 			Physics.Position dirVector = new Physics.Position(obstacle.getXPos()-pos.getX(), obstacle.getYPos()-pos.getY());
-			Physics.Velocity unitDir = new Velocity(dirVector.copy());
+			Physics.Velocity unitDir = new Physics.Velocity(dirVector.getVec().copy());
 			unitDir.normalize();
 			unitDir.scale(dirVector.getVec().dot(unitDir.getVec()));
 			unitDir.scale(-2);
