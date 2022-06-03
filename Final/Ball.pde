@@ -37,7 +37,22 @@ public class Ball {
 			unitDir.scale(-2);
 			velocity.add(unitDir);
 		} else {
+			velocity.scale(-1);
+			float ang = velocity.heading();
+			float switcher = atan(obstacle.getY()/obstacle.getX());
 			Physics.Velocity unitDir;
+			if (ang < switcher) {
+				unitDir = new Physics.Velocity(1,0);
+			} else if (ang < PI-switcher) {
+				unitDir = new Physics.Velocity(0,1);
+			} else if (ang < PI+switcher) {
+				unitDir = new Physics.Velocity(-1,0);
+			} else if (ang < 2*PI-switcher) {
+				unitDir = new Physics.Velocity(0,-1);
+			} else {
+				unitDir = new Physics.Velocity(1,0);
+			}
+			velocity.scale(-1);
 			//Do stuff to determine direction of normal
 			unitDir.scale(velocity.getVec().dot(unitDir.getVec()));
 			unitDir.scale(-2);
