@@ -39,7 +39,7 @@ public class Ball {
 		} else {
 			velocity.scale(-1);
 			float ang = velocity.heading();
-			float switcher = atan(obstacle.getY()/obstacle.getX());
+			float switcher = atan(obstacle.getYPos()/obstacle.getXPos());
 			Physics.Velocity unitDir;
 			if (ang < switcher) {
 				unitDir = new Physics.Velocity(1,0);
