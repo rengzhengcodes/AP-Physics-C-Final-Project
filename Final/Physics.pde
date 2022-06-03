@@ -26,6 +26,10 @@ public static class Physics {
 		public float mag() {
 			return this.vec.mag();
 		}
+		
+		public float heading() {
+			return this.vec.heading();
+		}
 
 		public float getX() {
 			return this.vec.x;
