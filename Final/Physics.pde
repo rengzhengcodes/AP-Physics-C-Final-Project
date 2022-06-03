@@ -67,7 +67,7 @@ public static class Physics {
 		private final String units = "m/s";
 		private PVector vec;
 
-		public Velocity(int x, int y) {
+		public Velocity(float x, float y) {
 			super(x, y);
 		}
 
@@ -96,7 +96,7 @@ public static class Physics {
 		private final String units = "m/s^2";
 		private PVector vec;
 
-		public Acceleration(int x, int y) {
+		public Acceleration(float x, float y) {
 			super(x, y);
 		}
 
