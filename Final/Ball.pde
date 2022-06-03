@@ -4,13 +4,15 @@ public class Ball {
 	private float charge;
 	private Physics.Velocity velocity;
 	private Physics.Position pos;
+	private PImage ball = null;
 
 	/**
 		*@param charge The charge of the ball in Coulombs.
 	**/
-	public Ball(float charge) {
+	public Ball(float charge, String file) {
 		this.charge = charge;
 		this.velocity = new Physics.Velocity(0, 0);
+		this.ball = loadImage(file);
 	}
 	void collide (Ball other) {
 		Physics.Velocity temp = (other.velocity).copy();
@@ -58,5 +60,12 @@ public class Ball {
 			unitDir.scale(-2);
 			velocity.add(unitDir);
 		}
+	}
+	void display() {
+		pushMatrix();
+		translate(pos.getX(), pos.getY());
+		imageMode(CENTER);
+		image(ball, 0, 0);
+		popMatrix();
 	}
 }
