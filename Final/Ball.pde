@@ -5,6 +5,7 @@ public class Ball {
 	private Physics.Velocity velocity;
 	private Physics.Position pos;
 	private PImage ball = null;
+	private final float timeunit = 1/24.;
 
 	/**
 		*@param charge The charge of the ball in Coulombs.
@@ -64,6 +65,12 @@ public class Ball {
 			unitDir.scale(-2);
 			velocity.add(unitDir);
 		}
+	}
+	void move () {
+		//move a small unit
+		pos.move(velocity.scale(timeunit));
+		velocity.scale(1/timeunit);
+		//detect collision
 	}
 	void display() {
 		pushMatrix();
