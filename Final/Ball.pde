@@ -76,7 +76,7 @@ public class Ball {
 	}
 	void move () {
 		//move a small unit
-    velocity.scale(timeunit);
+		velocity.scale(timeunit);
 		pos.move(velocity);
 		velocity.scale(1/timeunit);
 		//detect collision
