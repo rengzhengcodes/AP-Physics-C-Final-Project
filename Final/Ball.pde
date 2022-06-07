@@ -6,14 +6,16 @@ public class Ball {
 	private Physics.Position pos;
 	private PImage ball = null;
 	private final float timeunit = 1/24.;
+	private Table table;
 
 	/**
 		*@param charge The charge of the ball in Coulombs.
 	**/
-	public Ball(float charge, String file) {
+	public Ball(float charge, String file, Table table) {
 		this.charge = charge;
 		this.velocity = new Physics.Velocity(0, 0);
 		this.ball = loadImage(file);
+		this.table = table;
 	}
 	void collide (Ball other) {
 		Physics.Velocity temp = (other.velocity).copy();
@@ -79,7 +81,7 @@ public class Ball {
 		velocity.scale(timeunit);
 		pos.move(velocity);
 		velocity.scale(1/timeunit);
-		//detect collision
+		//decelerate due to friction
 	}
 	void display() {
 		pushMatrix();
