@@ -30,5 +30,5 @@ void defineBallPos() {
 		new Physics.Position(130, 130),
 		new Physics.Position(140, 140),
 		new Physics.Position(150, 150)
-	}
+	};
 }
