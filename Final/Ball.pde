@@ -44,26 +44,34 @@ public class Ball {
 				velocity.add(unitDir);
 			}
 		} else {
-			velocity.scale(-1);
-			float ang = velocity.heading();
-			float switcher = atan(obstacle.getYPos()/obstacle.getXPos());
-			Physics.Velocity unitDir;
-			if (ang < switcher) {
-				unitDir = new Physics.Velocity(1,0);
-			} else if (ang < PI-switcher) {
-				unitDir = new Physics.Velocity(0,1);
-			} else if (ang < PI+switcher) {
-				unitDir = new Physics.Velocity(-1,0);
-			} else if (ang < 2*PI-switcher) {
-				unitDir = new Physics.Velocity(0,-1);
-			} else {
-				unitDir = new Physics.Velocity(1,0);
+			if (
+				(obstacle.getXPos() - (obstacle.getWidth() / 2) <= this.getX() &&
+				this.getX() <= obstacle.getXPos() + (obstacle.getWidth() / 2)) &&
+				(obstacle.getYPos() - (obstacle.getLength() / 2) <= this.getY() &&
+				this.getY() <= obstacle.getYPos() + (obstacle.getLength / 2))
+			)
+			{
+				velocity.scale(-1);
+				float ang = velocity.heading();
+				float switcher = atan(obstacle.getYPos()/obstacle.getXPos());
+				Physics.Velocity unitDir;
+				if (ang < switcher) {
+					unitDir = new Physics.Velocity(1,0);
+				} else if (ang < PI-switcher) {
+					unitDir = new Physics.Velocity(0,1);
+				} else if (ang < PI+switcher) {
+					unitDir = new Physics.Velocity(-1,0);
+				} else if (ang < 2*PI-switcher) {
+					unitDir = new Physics.Velocity(0,-1);
+				} else {
+					unitDir = new Physics.Velocity(1,0);
+				}
+				velocity.scale(-1);
+				//Do stuff to determine direction of normal
+				unitDir.scale(velocity.getVec().dot(unitDir.getVec()));
+				unitDir.scale(-2);
+				velocity.add(unitDir);
 			}
-			velocity.scale(-1);
-			//Do stuff to determine direction of normal
-			unitDir.scale(velocity.getVec().dot(unitDir.getVec()));
-			unitDir.scale(-2);
-			velocity.add(unitDir);
 		}
 	}
 	void move () {
