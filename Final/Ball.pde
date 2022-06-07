@@ -45,10 +45,10 @@ public class Ball {
 			}
 		} else {
 			if (
-				(obstacle.getXPos() - (obstacle.getWidth() / 2) <= this.getX() &&
-				this.getX() <= obstacle.getXPos() + (obstacle.getWidth() / 2)) &&
-				(obstacle.getYPos() - (obstacle.getLength() / 2) <= this.getY() &&
-				this.getY() <= obstacle.getYPos() + (obstacle.getLength / 2))
+				(obstacle.getXPos() - (obstacle.getWidth() / 2) <= pos.getX() &&
+				pos.getX() <= obstacle.getXPos() + (obstacle.getWidth() / 2)) &&
+				(obstacle.getYPos() - (obstacle.getLength() / 2) <= pos.getY() &&
+				pos.getY() <= obstacle.getYPos() + (obstacle.getLength() / 2))
 			)
 			{
 				velocity.scale(-1);
@@ -76,7 +76,8 @@ public class Ball {
 	}
 	void move () {
 		//move a small unit
-		pos.move(velocity.scale(timeunit));
+    velocity.scale(timeunit);
+		pos.move(velocity);
 		velocity.scale(1/timeunit);
 		//detect collision
 	}
