@@ -30,14 +30,18 @@ public class Ball {
 		velocity.add(temp);
 	}
 	void collide (Obstacle obstacle) {
+		// grabs shape
 		int shape = obstacle.getKind();
+		// behavior based on shape
 		if (shape==ELLIPSE) {
-			Physics.Position dirVector = new Physics.Position(obstacle.getXPos()-pos.getX(), obstacle.getYPos()-pos.getY());
-			Physics.Velocity unitDir = new Physics.Velocity(dirVector.getVec().copy());
-			unitDir.normalize();
-			unitDir.scale(dirVector.getVec().dot(unitDir.getVec()));
-			unitDir.scale(-2);
-			velocity.add(unitDir);
+			if (dist(pos.getX(), pos.getY(), obstacle.getXPos(), obstacle.getYPos()) <= this.size + obstacle.getRadius()) {
+				Physics.Position dirVector = new Physics.Position(obstacle.getXPos()-pos.getX(), obstacle.getYPos()-pos.getY());
+				Physics.Velocity unitDir = new Physics.Velocity(dirVector.getVec().copy());
+				unitDir.normalize();
+				unitDir.scale(dirVector.getVec().dot(unitDir.getVec()));
+				unitDir.scale(-2);
+				velocity.add(unitDir);
+			}
 		} else {
 			velocity.scale(-1);
 			float ang = velocity.heading();
