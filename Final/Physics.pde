@@ -124,6 +124,10 @@ public static class Physics {
 		public void add(Force vec) {
 			this.vec.add(vec.getVec());
 		}
+		
+		public void scale(float m) {
+			this.vec.mult(m);
+		}
 	}
 
 	/**
