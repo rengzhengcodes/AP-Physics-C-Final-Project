@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Ball {
 	private final int mass = 1;
 	private final float size = 0.061;
@@ -88,6 +90,10 @@ public class Ball {
 		velocity.scale(timeunit);
 		pos.move(velocity);
 		velocity.scale(1/timeunit);
+		//figure out collisions;
+		for (Obstacle i: table.getObstacles()) {
+			collide(i);
+		}
 		//decelerate due to friction
 		Physics.Force fric = fric();
 		Physics.Acceleration accel = fric.accel(mass);
