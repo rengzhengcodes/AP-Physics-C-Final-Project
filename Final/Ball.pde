@@ -101,7 +101,7 @@ public class Ball {
 	}
 	
 	Physics.Force fric () {
-		Physics.Force f1 = getGravityForce(mass);
+		Physics.Force f1 = Physics.getGravityForce(mass);
 		f1.scale(table.getFloorFCoeff());
 		float mag = f1.mag();
 		Physics.Force f = new Physics.Force(new PVector(1,0));
