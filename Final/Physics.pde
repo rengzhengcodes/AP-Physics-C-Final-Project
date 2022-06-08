@@ -146,10 +146,6 @@ public static class Physics {
 			this.vec.normalize();
 		}
 		
-		public float mag() {
-			return this.vec.mag();
-		}
-		
 		public void rotate(float x) {
 			this.vec.rotate(x);
 		}
