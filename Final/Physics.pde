@@ -128,6 +128,11 @@ public static class Physics {
 		public void scale(float m) {
 			this.vec.mult(m);
 		}
+		
+		public float mag() {
+			return this.vec.mag();
+		}
+		
 		public Acceleration accel(float m) {
 			this.vec.mult(1/m);
 			return new Acceleration(vec.getVec());
