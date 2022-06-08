@@ -1,5 +1,7 @@
 // !!!!!Canvas max size 800x1400!!!!!!
 Table table = new Table(1);
+Ball[] balls = new Ball[16];
+
 void setup() {
  // cannot have any functions in size for some stupid reason, including numerical operators
 	size(1400, 700);
@@ -33,7 +35,6 @@ void defineBallPos() {
 		new Physics.Position(140, 140),
 		new Physics.Position(150, 150)
 	};
-	Ball[] balls = new Ball[16];
 
 	for (int i = 0; i < ballStarts.length - 1; i++) {
 		balls[i+1] = new Ball(0, (i+1) + ".png", table);
