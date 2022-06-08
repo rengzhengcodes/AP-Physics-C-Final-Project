@@ -82,7 +82,24 @@ public class Ball {
 		pos.move(velocity);
 		velocity.scale(1/timeunit);
 		//decelerate due to friction
+		Physics.Force fric = fric();
+		Physics.Acceleration accel = fric.accel(mass);
+		accel.scale(1/timeunit);
+		velocity.accelerate(accel);
 	}
+	
+	Physics.Force fric () {
+		Physics.Force f1 = getGravityForce(mass);
+		f1.scale(table.getFloorFCoeff());
+		float mag = f1.mag();
+		Physics.Force f = new Physics.Force(new PVector(1,0));
+		velocity.scale(-1);
+		f.rotate(velocity.heading());
+		velocity.scale(-1);
+		f.scale(mag);
+		return f;
+	}
+	
 	void display() {
 		pushMatrix();
 		translate(pos.getX(), pos.getY());
