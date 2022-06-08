@@ -17,6 +17,13 @@ public class Ball {
 		this.ball = loadImage(file);
 		this.table = table;
 	}
+	
+	public Ball(String file, Table table) {
+		this.charge = 0;
+		this.velocity = new Physics.Velocity(0, 0);
+		this.ball = loadImage(file);
+		this.table = table;
+	}
 	void collide (Ball other) {
 		Physics.Velocity temp = (other.velocity).copy();
 		temp.scale(-1);
@@ -86,6 +93,11 @@ public class Ball {
 		Physics.Acceleration accel = fric.accel(mass);
 		accel.scale(1/timeunit);
 		velocity.accelerate(accel);
+		//accelerate due to magnetic field
+		Physics.Force magnet = magnet();
+		Physics.Acceleration accel2 = magnet.accel(mass);
+		accel2.scale(1/timeunit);
+		velocity.accelerate(accel2);
 	}
 	
 	Physics.Force fric () {
@@ -98,6 +110,10 @@ public class Ball {
 		velocity.scale(-1);
 		f.scale(mag);
 		return f;
+	}
+	
+	Physics.Force magnet () {
+		return (table.getMfield()).affectCharge(velocity, charge);
 	}
 	
 	void display() {
