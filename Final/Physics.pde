@@ -137,6 +137,10 @@ public static class Physics {
 			this.vec.normalize();
 		}
 		
+		public float mag() {
+			return this.vec.mag();
+		}
+		
 		public Acceleration accel(float m) {
 			this.vec.mult(1/m);
 			return new Acceleration(vec.getVec());
