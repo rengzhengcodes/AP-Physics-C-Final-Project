@@ -41,6 +41,10 @@ public static class Physics {
 		public void normalize() {
 			this.vec.normalize();
 		}
+		
+		public void rotate(float x) {
+			this.vec.rotate(x);
+		}
 	}
 
 	static class Position extends VectorPhysics {
@@ -62,6 +66,11 @@ public static class Physics {
 		public void move(Velocity vec) {
 			this.vec.add(vec.getVec());
 		}
+		
+		public float heading() {
+			return this.vec.heading();
+		}
+		
 		public Position copy() {
 			return new Position(this.vec.copy());
 		}
@@ -137,8 +146,8 @@ public static class Physics {
 			this.vec.normalize();
 		}
 		
-		public float mag() {
-			return this.vec.mag();
+		public void rotate(float x) {
+			this.vec.rotate(x);
 		}
 		
 		public Acceleration accel(float m) {
