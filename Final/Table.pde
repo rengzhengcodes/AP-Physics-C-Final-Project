@@ -6,6 +6,7 @@ public class Table {
 	public static final float l = 2.7;
 	public static final float w = 1.4;
 	private ArrayList<Obstacle> obs;
+	private ArrayList<Ball> balls;
 
 	/**
 		*@param floorFrictionCoeff The coefficient of friction of the floor.
@@ -18,12 +19,14 @@ public class Table {
 		this.floorFrictionCoeff = floorFrictionCoeff;
 		this.mfield = mfield;
 		obs = new ArrayList<Obstacle>();
+		balls = new ArrayList<Ball>();
 	}
 	//For the generic pool table
 	public Table(float floorFrictionCoeff) {
 		this.floorFrictionCoeff = floorFrictionCoeff;
 		this.mfield = new MField(new PVector(0,0));
 		obs = new ArrayList<Obstacle>();
+		balls = new ArrayList<Ball>();
 	}
 
 	public MField getMfield() {
@@ -44,5 +47,17 @@ public class Table {
 	
 	public void addObject(Obstacle obstacle) {
 		obs.add(obstacle);
+	}
+	
+	public void addBall(Ball ball) {
+		balls.add(ball);
+	}
+	
+	public ArrayList<Obstacle> getObstacles() {
+		return obs;
+	}
+	
+	public ArrayList<Ball> getBalls() {
+		return balls;
 	}
 }
