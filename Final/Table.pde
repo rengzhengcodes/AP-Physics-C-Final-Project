@@ -60,4 +60,8 @@ public class Table {
 	public ArrayList<Ball> getBalls() {
 		return balls;
 	}
+	
+	public void removeBall(Ball ball) {
+		balls.remove(ball);
+	}
 }
