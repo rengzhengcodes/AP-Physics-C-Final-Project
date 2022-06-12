@@ -1,6 +1,7 @@
 // !!!!!Canvas max size 800x1400!!!!!!
 Table table = new Table(1);
 Physics.Position mouseStart = null;
+PImage tableImage;
 
 void setup() {
  // cannot have any functions in size for some stupid reason, including numerical operators
@@ -8,16 +9,16 @@ void setup() {
 	frameRate(24);
 	defineBallPos();
 	defineWalls();
+	tableImage = loadImage("Pool Table.png");
+	tableImage.resize(width, height);
 }
 
 void draw() {
-	PImage tableImage = loadImage("Pool Table.png");
-	tableImage.resize(width, height);
 	imageMode(CORNER);
 	image(tableImage, 0, 0);
 	for (Ball i: table.getBalls()) {
-    		i.display();
-			i.move();
+		i.display();
+		i.move();
 	}
 	for (Obstacle i: table.getObstacles()) {
 		i.display();
