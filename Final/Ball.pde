@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class Ball {
-	private final int mass = 1;
-	private final float size = 0.061;
+	private static final int mass = 1;
+	public static final float size = 0.061;
 	private float charge;
 	private Physics.Velocity velocity;
 	private Physics.Position pos;
@@ -126,11 +126,15 @@ public class Ball {
 		pushMatrix();
 		translate(pos.getX(), pos.getY());
 		imageMode(CENTER);
-		image(ball, 0, 0, ball.width/2, ball.height/2);
+		image(ball, 0, 0, round(size * Physics.pixelsPerMeter), round(size * Physics.pixelsPerMeter));
 		popMatrix();
 	}
 
 	void setPosition(Physics.Position pos) {
 		this.pos = pos;
+	}
+
+	Physics.Position getPosition() {
+		return this.pos;
 	}
 }

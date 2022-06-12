@@ -81,8 +81,11 @@ void defineWalls() {
 }
 
 void mousePressed() {
-	mouseStart = new Physics.Position(mouseX, mouseY);
-	System.out.println(mouseStart.getX() + ", " + mouseStart.getY());
+	Physics.Position cuePos = table.getBall(0).getPosition();
+	if (dist(mouseX, mouseY, cuePos.getX(), cuePos.getY()) < Ball.size * Physics.pixelsPerMeter) {
+		mouseStart = new Physics.Position(mouseX, mouseY);
+		System.out.println(mouseStart.getX() + ", " + mouseStart.getY());
+	}
 }
 
 void mouseReleased() {
