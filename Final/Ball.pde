@@ -19,7 +19,7 @@ public class Ball {
 		this.ball = loadImage(file);
 		this.table = table;
 	}
-	
+
 	public Ball(String file, Table table) {
 		this.charge = 0;
 		this.velocity = new Physics.Velocity(0, 0);
@@ -105,7 +105,7 @@ public class Ball {
 		accel2.scale(1/timeunit);
 		velocity.accelerate(accel2);
 	}
-	
+
 	Physics.Force fric () {
 		Physics.Force f1 = Physics.getGravityForce(mass);
 		f1.scale(table.getFloorFCoeff());
@@ -117,16 +117,20 @@ public class Ball {
 		f.scale(mag);
 		return f;
 	}
-	
+
 	Physics.Force magnet () {
 		return (table.getMfield()).affectCharge(velocity, charge);
 	}
-	
+
 	void display() {
 		pushMatrix();
 		translate(pos.getX(), pos.getY());
 		imageMode(CENTER);
 		image(ball, 0, 0, ball.width/2, ball.height/2);
 		popMatrix();
+	}
+
+	void setPosition(Physics.Position pos) {
+		this.pos = pos;
 	}
 }

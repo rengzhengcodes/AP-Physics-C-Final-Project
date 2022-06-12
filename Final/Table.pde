@@ -36,32 +36,36 @@ public class Table {
 	public float getFloorFCoeff() {
 		return this.floorFrictionCoeff;
 	}
-	
+
 	public float getWidth() {
 		return w;
 	}
-	
+
 	public float getLength() {
 		return l;
 	}
-	
-	public void addObject(Obstacle obstacle) {
+
+	public void addObstacle(Obstacle obstacle) {
 		obs.add(obstacle);
 	}
-	
+
 	public void addBall(Ball ball) {
 		balls.add(ball);
 	}
-	
+
 	public ArrayList<Obstacle> getObstacles() {
 		return obs;
 	}
-	
+
 	public ArrayList<Ball> getBalls() {
 		return balls;
 	}
-	
+
 	public void removeBall(Ball ball) {
 		balls.remove(ball);
+	}
+
+	public Ball getBall(int x) {
+		return balls.get(x);
 	}
 }
