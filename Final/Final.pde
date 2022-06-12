@@ -8,7 +8,7 @@ void setup() {
 	frameRate(24);
 	defineBallPos();
 	defineWalls();
-	PImage tableImage = loadImage("Pool Table.png");
+	tableImage = loadImage("Pool Table.png");
 	tableImage.resize(width, height);
 }
 
