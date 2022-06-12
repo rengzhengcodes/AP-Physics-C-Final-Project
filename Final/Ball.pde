@@ -105,7 +105,7 @@ public class Ball {
 			Physics.Acceleration accel = fric.accel(mass);
 			accel.scale(timeunit);
 			velocity.accelerate(accel);
-			if (vHeading != velocity.heading()) {
+			if (abs(vHeading - velocity.heading()) > abs(velocity.heading() - fric.heading())) {
 				velocity = new Physics.Velocity(0, 0);
 			}
 		}

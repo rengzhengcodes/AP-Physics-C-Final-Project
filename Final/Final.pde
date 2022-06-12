@@ -102,7 +102,9 @@ void mousePressed() {
 
 void mouseReleased() {
 	if (mouseStart != null) {
-		table.getBall(0).setVelocity(new Physics.Velocity(mouseStart.getX() - mouseX, mouseStart.getY() - mouseY));
+		Physics.Velocity vel = new Physics.Velocity(mouseStart.getX() - mouseX, mouseStart.getY() - mouseY);
+		vel.scale(1/2.);
+		table.getBall(0).setVelocity(vel);
 
 		mouseStart = null;
 		System.out.println("mouse released");
