@@ -137,4 +137,8 @@ public class Ball {
 	Physics.Position getPosition() {
 		return this.pos;
 	}
+
+	void setVelocity(Physics.Velocity v) {
+		this.velocity = v;
+	}
 }

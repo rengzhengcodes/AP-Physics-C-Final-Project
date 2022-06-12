@@ -17,6 +17,7 @@ void draw() {
 	image(tableImage, 0, 0);
 	for (Ball i: table.getBalls()) {
     		i.display();
+			i.move();
 	}
 	for (Obstacle i: table.getObstacles()) {
 		i.display();
@@ -89,6 +90,10 @@ void mousePressed() {
 }
 
 void mouseReleased() {
-	mouseStart = null;
-	System.out.println("mouse released");
+	if (mouseStart != null) {
+		table.getBall(0).setVelocity(new Physics.Velocity(mouseStart.getX() - mouseX, mouseStart.getY() - mouseY));
+
+		mouseStart = null;
+		System.out.println("mouse released");
+	}
 }

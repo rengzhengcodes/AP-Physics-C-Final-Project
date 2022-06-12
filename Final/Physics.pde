@@ -60,19 +60,19 @@ public static class Physics {
 		}
 
 		public void add(Position vec) {
-			this.vec.add(vec.getVec());
+			super.vec.add(vec.getVec());
 		}
 
 		public void move(Velocity vec) {
-			this.vec.add(vec.getVec());
+			super.vec.add(vec.getVec());
 		}
 
 		public float heading() {
-			return this.vec.heading();
+			return super.vec.heading();
 		}
 
 		public Position copy() {
-			return new Position(this.vec.copy());
+			return new Position(super.vec.copy());
 		}
 	}
 
@@ -89,19 +89,19 @@ public static class Physics {
 		}
 
 		public void add(Velocity vec) {
-			this.vec.add(vec.getVec());
+			super.vec.add(vec.getVec());
 		}
 
 		public void accelerate(Acceleration	vec) {
-			this.vec.add(vec.getVec());
+			super.vec.add(vec.getVec());
 		}
 
 		public void scale(float m) {
-			this.vec.mult(m);
+			super.vec.mult(m);
 		}
 
 		public Velocity copy() {
-			return new Velocity(this.vec.copy());
+			return new Velocity(super.vec.copy());
 		}
 	}
 
@@ -118,11 +118,11 @@ public static class Physics {
 		}
 
 		public void add(Acceleration vec) {
-			this.vec.add(vec.getVec());
+			super.vec.add(vec.getVec());
 		}
 
 		public void scale(float m) {
-			this.vec.mult(m);
+			super.vec.mult(m);
 		}
 	}
 
@@ -135,30 +135,30 @@ public static class Physics {
 		}
 
 		public void add(Force vec) {
-			this.vec.add(vec.getVec());
+			super.vec.add(vec.getVec());
 		}
 
 		public void scale(float m) {
-			this.vec.mult(m);
+			super.vec.mult(m);
 		}
 
 		public float mag() {
-			return this.vec.mag();
+			return super.vec.mag();
 		}
 
 		public void normalize() {
-			this.vec.normalize();
+			super.vec.normalize();
 		}
 
 		public void rotate(float x) {
-			this.vec.rotate(x);
+			super.vec.rotate(x);
 		}
 
 		public Acceleration accel(float m) {
-			this.vec.mult(1/m);
-			Acceleration temp = new Acceleration(vec);
-			this.vec.mult(m);
-      return temp;
+			super.vec.mult(1/m);
+			Acceleration temp = new Acceleration(super.vec);
+			super.vec.mult(m);
+			return temp;
 		}
 	}
 
