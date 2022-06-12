@@ -5,6 +5,7 @@ public class Obstacle {
 	private float radius;
 	private float l;
 	private float w;
+	private PImage img;
 
 	/**
 		*@param PShape The shape of the obstacle (probably between rectangle and ball)
@@ -20,6 +21,7 @@ public class Obstacle {
 		this.radius = radius;
 		this.xpos = xpos;
 		this.ypos = ypos;
+		convertToImage();
 	}
 
 	public Obstacle(PShape pshape, float l, float w, float xpos, float ypos) {
@@ -28,6 +30,20 @@ public class Obstacle {
 		this.w = w;
 		this.xpos = xpos;
 		this.ypos = ypos;
+		convertToImage();
+	}
+	
+	public void convertToImage() {
+		if (getKind()==RECT) {
+			img = createImage(int(l), int(w), RGB);
+			img.loadPixels();
+			for (int i = 0; i < img.pixels.length; i++) {
+				img.pixels[i] = color(37, 128, 72);
+			}
+			img.updatePixels();
+		} else {
+			img = loadImage("obstacle.png");
+		}
 	}
 
 	public PShape getPShape() {
@@ -57,5 +73,12 @@ public class Obstacle {
 	public int getKind() {
 		//should return either RECT or ELLIPSE
 		return pshape.getKind();
+	}
+	void display() {
+		pushMatrix();
+		translate(xpos, ypos);
+		imageMode(CENTER);
+		image(img, 0, 0, l, w);
+		popMatrix();
 	}
 }
