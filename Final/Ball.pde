@@ -99,7 +99,7 @@ public class Ball {
 			float vHeading = velocity.heading();
 			Physics.Force fric = fric();
 			Physics.Acceleration accel = fric.accel(mass);
-			accel.scale(1/timeunit);
+			accel.scale(timeunit);
 			velocity.accelerate(accel);
 			if (vHeading != velocity.heading()) {
 				velocity = new Physics.Velocity(0, 0);
