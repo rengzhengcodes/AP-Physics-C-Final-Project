@@ -19,6 +19,16 @@ void draw() {
 	for (Ball i: table.getBalls()) {
 		i.display();
 		i.move();
+
+		for (Ball j: table.getBalls()) {
+			if (i != j) {
+				i.collide(j);
+			}
+		}
+
+		for (Obstacle k: table.getObstacles()) {
+			i.collide(k);
+		}
 	}
 	for (Obstacle i: table.getObstacles()) {
 		i.display();
