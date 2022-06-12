@@ -96,10 +96,14 @@ public class Ball {
 		}
 		//decelerate due to friction
 		if (velocity.mag() > 0) {
+			float vHeading = velocity.heading();
 			Physics.Force fric = fric();
 			Physics.Acceleration accel = fric.accel(mass);
 			accel.scale(1/timeunit);
 			velocity.accelerate(accel);
+			if (vHeading != velocity.heading()) {
+				velocity = new Physics.Velocity(0, 0);
+			}
 		}
 		//accelerate due to magnetic field
 		Physics.Force magnet = magnet();
