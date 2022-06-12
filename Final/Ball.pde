@@ -27,19 +27,23 @@ public class Ball {
 		this.table = table;
 	}
 	void collide (Ball other) {
-		Physics.Velocity temp = (other.velocity).copy();
-		temp.scale(-1);
-		velocity.add(temp);
-		Physics.Position dirVector = new Physics.Position(other.pos.getX()-pos.getX(), other.pos.getY()-pos.getY());
-		Physics.Velocity unitDir = new Physics.Velocity(dirVector.getVec().copy());
-		dirVector.normalize();
-		unitDir.scale(dirVector.getVec().dot(unitDir.getVec()));
-		(other.velocity) = unitDir.copy();
-		unitDir.scale(-1);
-		velocity.add(unitDir);
-		temp.scale(-1);
-		(other.velocity).add(temp);
-		velocity.add(temp);
+		Physics.Position otherPos = other.getPosition();
+
+		if (dist(otherPos.getX(), otherPos.getY(), pos.getX(), pos.getY()) <= 2 * size * Physics.pixelsPerMeter) {
+			Physics.Velocity temp = (other.velocity).copy();
+			temp.scale(-1);
+			velocity.add(temp);
+			Physics.Position dirVector = new Physics.Position(other.pos.getX()-pos.getX(), other.pos.getY()-pos.getY());
+			Physics.Velocity unitDir = new Physics.Velocity(dirVector.getVec().copy());
+			dirVector.normalize();
+			unitDir.scale(dirVector.getVec().dot(unitDir.getVec()));
+			(other.velocity) = unitDir.copy();
+			unitDir.scale(-1);
+			velocity.add(unitDir);
+			temp.scale(-1);
+			(other.velocity).add(temp);
+			velocity.add(temp);
+		}
 	}
 	void collide (Obstacle obstacle) {
 		// grabs shape
