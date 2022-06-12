@@ -1,6 +1,5 @@
 // !!!!!Canvas max size 800x1400!!!!!!
 Table table = new Table(1);
-Ball[] balls = new Ball[16];
 
 void setup() {
  // cannot have any functions in size for some stupid reason, including numerical operators
@@ -14,8 +13,8 @@ void draw() {
 	tableImage.resize(width, height);
 	imageMode(CORNER);
 	image(tableImage, 0, 0);
-	for (int i = 0; i < balls.length; i++) { 
-    		balls[i].display();
+	for (Ball i: table.getBalls()) { 
+    		i.display();
 	}
 }
 
@@ -38,12 +37,10 @@ void defineBallPos() {
 		new Physics.Position(1052, 394),
 		new Physics.Position(1052, 438)
 	};
-
+	table.addBall(new Ball(0, "cue.png", table));
+	table.getBall(0).setPosition(ballStarts[0]);
 	for (int i = 0; i < ballStarts.length - 1; i++) {
-		balls[i+1] = new Ball(0, (i+1) + ".png", table);
-		balls[i+1].setPosition(ballStarts[i+1]);
+		table.addBall(new Ball(0, (i+1) + ".png", table));
+		table.getBall(i+1).setPosition(ballStarts[i+1]);
 	}
-
-	balls[0] = new Ball(0, "cue.png", table);
-	balls[0].setPosition(ballStarts[0]);
 }
