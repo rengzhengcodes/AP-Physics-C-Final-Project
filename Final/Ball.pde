@@ -29,7 +29,7 @@ public class Ball {
 	void collide (Ball other) {
 		Physics.Position otherPos = other.getPosition();
 
-		if (dist(otherPos.getX(), otherPos.getY(), pos.getX(), pos.getY()) <= 2 * size * Physics.pixelsPerMeter) {
+		if (dist(otherPos.getX(), otherPos.getY(), pos.getX(), pos.getY()) <= size * Physics.pixelsPerMeter) {
 			Physics.Velocity temp = (other.velocity).copy();
 			temp.scale(-1);
 			velocity.add(temp);
