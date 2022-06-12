@@ -14,31 +14,36 @@ void draw() {
 	tableImage.resize(width, height);
 	imageMode(CORNER);
 	image(tableImage, 0, 0);
+	for (int i = 0; i < balls.length; i++) { 
+    		balls[i].display();
+	}
 }
 
 void defineBallPos() {
 	Physics.Position[] ballStarts = {
-		new Physics.Position(1, 1),
-		new Physics.Position(10, 10),
-		new Physics.Position(20, 20),
-		new Physics.Position(30, 30),
-		new Physics.Position(40, 40),
-		new Physics.Position(50, 50),
-		new Physics.Position(60, 60),
-		new Physics.Position(70, 70),
-		new Physics.Position(80, 80),
-		new Physics.Position(90, 90),
-		new Physics.Position(100, 100),
-		new Physics.Position(110, 110),
-		new Physics.Position(120, 120),
-		new Physics.Position(130, 130),
-		new Physics.Position(140, 140),
-		new Physics.Position(150, 150)
+		new Physics.Position(350, 350),
+		new Physics.Position(900, 350),
+		new Physics.Position(938, 328),
+		new Physics.Position(938, 372),
+		new Physics.Position(976, 306),
+		new Physics.Position(976, 350),
+		new Physics.Position(976, 394),
+		new Physics.Position(1014, 284),
+		new Physics.Position(1014, 328),
+		new Physics.Position(1014, 372),
+		new Physics.Position(1014, 416),
+		new Physics.Position(1052, 262),
+		new Physics.Position(1052, 306),
+		new Physics.Position(1052, 350),
+		new Physics.Position(1052, 394),
+		new Physics.Position(1052, 438)
 	};
 
 	for (int i = 0; i < ballStarts.length - 1; i++) {
 		balls[i+1] = new Ball(0, (i+1) + ".png", table);
+		balls[i+1].setPosition(ballStarts[i+1]);
 	}
 
 	balls[0] = new Ball(0, "cue.png", table);
+	balls[0].setPosition(ballStarts[0]);
 }
