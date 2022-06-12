@@ -1,5 +1,6 @@
 // !!!!!Canvas max size 800x1400!!!!!!
 Table table = new Table(1);
+Physics.Position mouseStart = null;
 
 void setup() {
  // cannot have any functions in size for some stupid reason, including numerical operators
@@ -14,11 +15,17 @@ void draw() {
 	tableImage.resize(width, height);
 	imageMode(CORNER);
 	image(tableImage, 0, 0);
-	for (Ball i: table.getBalls()) { 
+	for (Ball i: table.getBalls()) {
     		i.display();
 	}
 	for (Obstacle i: table.getObstacles()) {
 		i.display();
+	}
+
+	if (mouseStart != null) {
+		strokeWeight(8);
+		line(mouseStart.getX(), mouseStart.getY(), mouseX, mouseY);
+		System.out.println("drawing line");
 	}
 }
 
@@ -54,7 +61,7 @@ void defineWalls() {
 		new Physics.Position(380, 60),
 		new Physics.Position(1020, 60),
 		new Physics.Position(30, 350),
-		new Physics.Position(380, 642), 
+		new Physics.Position(380, 642),
 		new Physics.Position(1020, 642),
 		new Physics.Position(1370, 350)
 	};
@@ -72,4 +79,13 @@ void defineWalls() {
 		}
 	}
 }
-		
+
+void mousePressed() {
+	mouseStart = new Physics.Position(mouseX, mouseY);
+	System.out.println(mouseStart.getX() + ", " + mouseStart.getY());
+}
+
+void mouseReleased() {
+	mouseStart = null;
+	System.out.println("mouse released");
+}
