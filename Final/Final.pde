@@ -1,5 +1,6 @@
 // !!!!!Canvas max size 800x1400!!!!!!
 Table table = new Table(1);
+PImage tableImage;
 
 void setup() {
  // cannot have any functions in size for some stupid reason, including numerical operators
@@ -7,18 +8,18 @@ void setup() {
 	frameRate(24);
 	defineBallPos();
 	defineWalls();
+	PImage tableImage = loadImage("Pool Table.png");
+	tableImage.resize(width, height);
 }
 
 void draw() {
-	PImage tableImage = loadImage("Pool Table.png");
-	tableImage.resize(width, height);
 	imageMode(CORNER);
 	image(tableImage, 0, 0);
-	for (Ball i: table.getBalls()) { 
-    		i.display();
-	}
 	for (Obstacle i: table.getObstacles()) {
 		i.display();
+	}
+	for (Ball i: table.getBalls()) { 
+    		i.display();
 	}
 }
 
