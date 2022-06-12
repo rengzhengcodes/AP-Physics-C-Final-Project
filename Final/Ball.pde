@@ -126,7 +126,7 @@ public class Ball {
 		pushMatrix();
 		translate(pos.getX(), pos.getY());
 		imageMode(CENTER);
-		image(ball, 0, 0);
+		image(ball, 0, 0, ball.width/2, ball.height/2);
 		popMatrix();
 	}
 }
