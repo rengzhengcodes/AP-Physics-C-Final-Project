@@ -6,6 +6,7 @@ void setup() {
 	size(1400, 700);
 	frameRate(24);
 	defineBallPos();
+	defineWalls();
 }
 
 void draw() {
@@ -15,6 +16,9 @@ void draw() {
 	image(tableImage, 0, 0);
 	for (Ball i: table.getBalls()) { 
     		i.display();
+	}
+	for (Obstacle i: table.getObstacles()) {
+		i.display();
 	}
 }
 
@@ -44,3 +48,28 @@ void defineBallPos() {
 		table.getBall(i+1).setPosition(ballStarts[i+1]);
 	}
 }
+
+void defineWalls() {
+	Physics.Position[] wallPoses = {
+		new Physics.Position(380, 60),
+		new Physics.Position(1020, 60),
+		new Physics.Position(30, 350),
+		new Physics.Position(380, 642), 
+		new Physics.Position(1020, 642),
+		new Physics.Position(1370, 350)
+	};
+	PShape pshape;
+	Obstacle obs;
+	for (int i = 0; i < wallPoses.length; i++) {
+		if (i % 3 != 2) {
+			pshape = createShape(RECT, wallPoses[i].getX()-270, wallPoses[i].getY()-24, 540, 48);
+			obs = new Obstacle(pshape, 540, 48, wallPoses[i].getX(), wallPoses[i].getY());
+			table.addObstacle(obs);
+		} else {
+			pshape = createShape(RECT, wallPoses[i].getX()-24, wallPoses[i].getY()-250, 48, 500);
+			obs = new Obstacle(pshape, 48, 500, wallPoses[i].getX(), wallPoses[i].getY());
+			table.addObstacle(obs);
+		}
+	}
+}
+		
