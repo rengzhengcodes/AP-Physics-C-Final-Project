@@ -95,10 +95,12 @@ public class Ball {
 			collide(i);
 		}
 		//decelerate due to friction
-		Physics.Force fric = fric();
-		Physics.Acceleration accel = fric.accel(mass);
-		accel.scale(1/timeunit);
-		velocity.accelerate(accel);
+		if (velocity.mag() > 0) {
+			Physics.Force fric = fric();
+			Physics.Acceleration accel = fric.accel(mass);
+			accel.scale(1/timeunit);
+			velocity.accelerate(accel);
+		}
 		//accelerate due to magnetic field
 		Physics.Force magnet = magnet();
 		Physics.Acceleration accel2 = magnet.accel(mass);
