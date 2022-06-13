@@ -62,6 +62,7 @@ void draw() {
 
 	if (mouseStart != null) {
 		strokeWeight(8);
+		stroke(0);
 		line(mouseStart.getX(), mouseStart.getY(), mouseX, mouseY);
 		System.out.println("drawing line");
 	}
