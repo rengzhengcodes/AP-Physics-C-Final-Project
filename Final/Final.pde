@@ -112,7 +112,12 @@ void detectPots() {
 	}
 
 	for (Ball i: potted) {
-		table.removeBall(i);
+		if (i == table.getBalls().get(0)) {
+			i.setVelocity(new Physics.Velocity(0, 0));
+			i.setPosition(new Physics.Position(350, 350));
+		} else {
+			table.removeBall(i);
+		}
 	}
 }
 
