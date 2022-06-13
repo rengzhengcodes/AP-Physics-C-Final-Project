@@ -2,15 +2,19 @@
 Table table = new Table(1);
 Physics.Position mouseStart = null;
 PImage tableImage;
+HScrollbar hs1, hs2;
 
 void setup() {
  // cannot have any functions in size for some stupid reason, including numerical operators
-	size(1400, 700);
+	size(1400, 800);
 	frameRate(24);
 	defineBallPos();
 	defineWalls();
 	tableImage = loadImage("Pool Table.png");
-	tableImage.resize(width, height);
+	tableImage.resize(1400, 700);
+
+	hs1 = new HScrollbar(0, 700, width, 16, 16);
+	hs2 = new HScrollbar(0, 750, width, 16, 16);
 }
 
 void draw() {
@@ -19,6 +23,11 @@ void draw() {
 		image(loadImage("win.jpg"), 0, 0);
 		return;
 	}
+	hs1.update();
+	hs2.update();
+	hs1.display();
+	hs2.display();
+
 	imageMode(CORNER);
 	image(tableImage, 0, 0);
 	ArrayList<Ball> arr = table.getBalls();
@@ -47,7 +56,7 @@ void defineBallPos() {
 	Physics.Position[] ballStarts = {
 		new Physics.Position(350, 350),
 		new Physics.Position(900, 350),
-		/*new Physics.Position(938, 328),
+		new Physics.Position(938, 328),
 		new Physics.Position(938, 372),
 		new Physics.Position(976, 306),
 		new Physics.Position(976, 350),
@@ -60,7 +69,7 @@ void defineBallPos() {
 		new Physics.Position(1052, 306),
 		new Physics.Position(1052, 350),
 		new Physics.Position(1052, 394),
-		new Physics.Position(1052, 438)*/
+		new Physics.Position(1052, 438)
 	};
 	table.addBall(new Ball(0, "cue.png", table));
 	table.getBall(0).setPosition(ballStarts[0]);
