@@ -14,6 +14,11 @@ void setup() {
 }
 
 void draw() {
+	if (table.getBalls().size() == 1) {
+		imageMode(CORNER);
+		image(loadImage("win.jpg"), 0, 0);
+		return;
+	}
 	imageMode(CORNER);
 	image(tableImage, 0, 0);
 	ArrayList<Ball> arr = table.getBalls();
@@ -42,7 +47,7 @@ void defineBallPos() {
 	Physics.Position[] ballStarts = {
 		new Physics.Position(350, 350),
 		new Physics.Position(900, 350),
-		new Physics.Position(938, 328),
+		/*new Physics.Position(938, 328),
 		new Physics.Position(938, 372),
 		new Physics.Position(976, 306),
 		new Physics.Position(976, 350),
@@ -55,7 +60,7 @@ void defineBallPos() {
 		new Physics.Position(1052, 306),
 		new Physics.Position(1052, 350),
 		new Physics.Position(1052, 394),
-		new Physics.Position(1052, 438)
+		new Physics.Position(1052, 438)*/
 	};
 	table.addBall(new Ball(0, "cue.png", table));
 	table.getBall(0).setPosition(ballStarts[0]);
