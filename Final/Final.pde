@@ -55,7 +55,7 @@ void draw() {
 			textSize(20);
 			MField mf = new MField((hs1.getPos() - 700) / 700);
 			table.setMField(mf);
-			text("Magnetic Field Strength: " + table.getMfield().mag(), width/2, 720);
+			text("Magnetic Field Strength: " + (hs1.getPos() - 700) / 700, width/2, 720);
 			hs2.display();
 			table.getBalls().get(0).setCharge((hs2.getPos() - 700) / 700);
 			text("Cue Ball Charge: " + table.getBalls().get(0).getCharge(), width/2, 770);
@@ -81,7 +81,7 @@ void draw() {
 
 	if (mode >= 2) {
 		textSize(20);
-		textMode(CENTER);
+		textAlign(CENTER);
 		if (table.getBalls().get(0).getCharge() > 0) {
 			Physics.Position ballPos = table.getBalls().get(0).getPosition();
 			fill(color(255, 0, 0));
@@ -90,6 +90,30 @@ void draw() {
 			Physics.Position ballPos = table.getBalls().get(0).getPosition();
 			fill(color(0, 0, 255));
 			text("-", ballPos.getX(), ballPos.getY());
+		}
+
+		textSize(50);
+		fill(255);
+		if ((hs1.getPos() - 700) / 700 < 0) {
+			text("X", 700, 350);
+			text("X", 350, 350);
+			text("X", 1050, 350);
+			text("X", 700, 450);
+			text("X", 350, 450);
+			text("X", 1050, 450);
+			text("X", 700, 250);
+			text("X", 350, 250);
+			text("X", 1050, 250);
+		} else if ((hs1.getPos() - 700) / 700 > 0) {
+			text(".", 350, 350);
+			text(".", 700, 350);
+			text(".", 1050, 350);
+			text(".", 700, 450);
+			text(".", 350, 450);
+			text(".", 1050, 450);
+			text(".", 700, 250);
+			text(".", 350, 250);
+			text(".", 1050, 250);
 		}
 	}
 
