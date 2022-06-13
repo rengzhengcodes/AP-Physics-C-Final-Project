@@ -70,6 +70,7 @@ public class Ball {
 			{
 				velocity.scale(-1);
 				float ang = velocity.heading();
+				if (ang < 0) ang += 2*PI;
 				float switcher = atan(obstacle.getYPos()/obstacle.getXPos());
 				Physics.Velocity unitDir;
 				if (ang < switcher) {
