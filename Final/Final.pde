@@ -13,8 +13,8 @@ void setup() {
 	tableImage = loadImage("Pool Table.png");
 	tableImage.resize(1400, 700);
 
-	hs1 = new HScrollbar(0, 700, width, 16, 16);
-	hs2 = new HScrollbar(0, 750, width, 16, 16);
+	hs1 = new HScrollbar(0, 740, width, 16, 16);
+	hs2 = new HScrollbar(0, 790, width, 16, 16);
 }
 
 void draw() {
@@ -26,7 +26,11 @@ void draw() {
 	hs1.update();
 	hs2.update();
 	hs1.display();
+	textAlign(CENTER);
+	textSize(20);
+	text("Magnetic Field Strength: ", width/2, 720);
 	hs2.display();
+	text("Cue Ball Charge: ", width/2, 770);
 
 	imageMode(CORNER);
 	image(tableImage, 0, 0);
