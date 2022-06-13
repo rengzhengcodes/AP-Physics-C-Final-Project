@@ -16,18 +16,11 @@ void setup() {
 void draw() {
 	imageMode(CORNER);
 	image(tableImage, 0, 0);
-	for (Ball i: table.getBalls()) {
-		i.display();
-		i.move();
-
-		for (Ball j: table.getBalls()) {
-			if (i != j) {
-				i.collide(j);
-			}
-		}
-
-		for (Obstacle k: table.getObstacles()) {
-			i.collide(k);
+	for (int i = 0; i < arr.size(); i++) {
+		arr.get(i).display();
+		arr.get(i).move();
+		for (int j = 0; j < i; j++) {
+			arr.get(i).collide(arr.get(j));
 		}
 	}
 	for (Obstacle i: table.getObstacles()) {

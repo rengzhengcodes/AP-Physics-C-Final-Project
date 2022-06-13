@@ -59,7 +59,12 @@ public class Ball {
 				velocity.add(unitDir);
 			}
 		} else {
-			if (rectCollision(obstacle))
+			if (
+				(obstacle.getXPos() - (obstacle.getLength()/2) - size <= pos.getX() &&
+				pos.getX() <= obstacle.getXPos() + (obstacle.getLength()/2) + size)) &&
+				(obstacle.getYPos() - (obstacle.getWidth()/2 - size) <= pos.getY() &&
+				pos.getY() <= obstacle.getYPos() + (obstacle.getWidth()/2) + size)
+			)
 			{
 				velocity.scale(-1);
 				float ang = velocity.heading();
