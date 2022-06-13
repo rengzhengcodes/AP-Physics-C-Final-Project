@@ -3,7 +3,7 @@ Table table = new Table(1);
 Physics.Position mouseStart = null;
 PImage tableImage;
 HScrollbar hs1, hs2;
-int mode = 2;
+int mode = 0;
 
 void setup() {
  // cannot have any functions in size for some stupid reason, including numerical operators
@@ -20,14 +20,29 @@ void setup() {
 
 void draw() {
 	background(255);
+
 	if (table.getBalls().size() == 1) {
 		imageMode(CORNER);
 		image(loadImage("win.jpg"), 0, 0);
 		return;
 	}
 	switch (mode) {
+		case 0:
+			image(loadImage("choice.jpg"), 0, 0);
+
+			if (mousePressed) {
+				if (mouseX < 1400/3.) {
+					mode = 1;
+				} else if (mouseX < 1400 * 2/3.) {
+					mode = 2;
+				} else {
+					mode = 3;
+				}
+			}
+			return;
 		case 1:
 			break;
+		case 3:
 		case 2:
 			hs1.update();
 			hs2.update();
