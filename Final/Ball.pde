@@ -47,46 +47,42 @@ public class Ball {
 			other.velocity.add(self_switch);
 		}
 	}
-	void collide (Obstacle obstacle) {
-		// grabs shape
-		int shape = obstacle.getKind();
-		// behavior based on shape
-		if (shape==ELLIPSE) {
-			if (dist(pos.getX(), pos.getY(), obstacle.getXPos(), obstacle.getYPos()) <= this.size + obstacle.getRadius()) {
-				Physics.Position dirVector = new Physics.Position(obstacle.getXPos()-pos.getX(), obstacle.getYPos()-pos.getY());
-				Physics.Velocity unitDir = new Physics.Velocity(dirVector.getVec().copy());
-				unitDir.normalize();
-				unitDir.scale(dirVector.getVec().dot(unitDir.getVec()));
-				unitDir.scale(-2);
-				velocity.add(unitDir);
-			}
-		} else {
-			Physics.Velocity unitDir;
-			if (pos.getX() + size >= obstacle.getXPos() - obstacle.getLength()/2 &&
-				pos.getX() - size <= obstacle.getXPos() + obstacle.getLength()/2) {
-				if (pos.getX() < obstacle.getXPos()) {
-					unitDir = new Physics.Velocity(-1,0);
-				} else {
-					unitDir = new Physics.Velocity(1,0);
-				}
-				velocity.scale(-1);
-				unitDir.scale(2*velocity.getVec().dot(unitDir.getVec()));
-				velocity.scale(-1);
-				velocity.add(unitDir);
-			} else if (pos.getY() + size >= obstacle.getYPos() - obstacle.getWidth()/2 &&
-				pos.getY() - size <= obstacle.getYPos() + obstacle.getWidth()/2) {
-				if (pos.getY() < obstacle.getYPos()) {
-					unitDir = new Physics.Velocity(0,-1);
-				} else {
-					unitDir = new Physics.Velocity(0,1);
-				}
-				velocity.scale(-1);
-				unitDir.scale(2*velocity.getVec().dot(unitDir.getVec()));
-				velocity.scale(-1);
-				velocity.add(unitDir);
-			}
-		}
-	}
+	void collidevert (Obstacle obstacle) {
+    Physics.Velocity unitDir;
+    if (pos.getX() + size >= obstacle.getXPos() - obstacle.getLength()/2 &&
+      pos.getX() - size <= obstacle.getXPos() + obstacle.getLength()/2 &&
+      pos.getY() + size >= obstacle.getYPos() - obstacle.getWidth()/2 &&
+      pos.getY() - size <= obstacle.getYPos() + obstacle.getWidth()/2) {
+      if (pos.getX() < obstacle.getXPos()) {
+        unitDir = new Physics.Velocity(-1,0);
+      } else {
+        unitDir = new Physics.Velocity(1,0);
+      }
+      velocity.scale(-1);
+      unitDir.scale(2*velocity.getVec().dot(unitDir.getVec()));
+      velocity.scale(-1);
+      velocity.add(unitDir);
+      
+    }
+  }
+  
+  void collidehori (Obstacle obstacle) {
+    Physics.Velocity unitDir;
+    if (pos.getY() + size >= obstacle.getYPos() - obstacle.getWidth()/2 &&
+      pos.getY() - size <= obstacle.getYPos() + obstacle.getWidth()/2 &&
+      pos.getX() + size >= obstacle.getXPos() - obstacle.getLength()/2 &&
+      pos.getX() - size <= obstacle.getXPos() + obstacle.getLength()/2) {
+      if (pos.getY() < obstacle.getYPos()) {
+        unitDir = new Physics.Velocity(0,-1);
+      } else {
+        unitDir = new Physics.Velocity(0,1);
+      }
+      velocity.scale(-1);
+      unitDir.scale(2*velocity.getVec().dot(unitDir.getVec()));
+      velocity.scale(-1);
+      velocity.add(unitDir);
+    }
+  }
 
 	void move () {
 		//move a small unit
@@ -94,8 +90,12 @@ public class Ball {
 		pos.move(velocity);
 		velocity.scale(1/timeunit);
 		//figure out collisions;
-		for (Obstacle i: table.getObstacles()) {
-			collide(i);
+		for (int i = 0; i < obst.size(); i++) {
+			if (i==2 || i==5 || i==7 || i==9) {
+				collidevert(obst.get(i));
+			} else {
+				collidehori(obst.get(i));
+			}
 		}
 		//decelerate due to friction
 		if (velocity.mag() > 0) {
