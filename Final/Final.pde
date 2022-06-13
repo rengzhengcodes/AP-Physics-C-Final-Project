@@ -23,72 +23,110 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+	background(255);
 
-  if (table.getBalls().size() == 1) {
-    imageMode(CORNER);
-    image(loadImage("win.jpg"), 0, 0);
-    return;
-  }
-  switch (mode) {
-    case 0:
-      image(loadImage("choice.jpg"), 0, 0);
+	if (table.getBalls().size() == 1) {
+		imageMode(CORNER);
+		image(loadImage("win.jpg"), 0, 0);
+		return;
+	}
+	switch (mode) {
+		case 0:
+			image(loadImage("choice.jpg"), 0, 0);
 
-      if (mousePressed) {
-        if (mouseX < 1400/3.) {
-          mode = 1;
-          table.getObstacles().remove(center1);
-          table.getObstacles().remove(center2);
-        } else if (mouseX < 1400 * 2/3.) {
-          mode = 2;
-          table.getObstacles().remove(center1);
-          table.getObstacles().remove(center2);
-        } else {
-          mode = 3;
-        }
-      }
-      return;
-    case 1:
-      break;
-    case 3:
-    case 2:
-      hs1.update();
-      hs2.update();
-      hs1.display();
-      textAlign(CENTER);
-      textSize(20);
-      MField mf = new MField((hs1.getPos() - 700) / 700);
-      table.setMField(mf);
-      text("Magnetic Field Strength: " + table.getMfield().mag(), width/2, 720);
-      hs2.display();
-      table.getBalls().get(0).setCharge((hs2.getPos() - 700) / 700);
-      text("Cue Ball Charge: " + table.getBalls().get(0).getCharge(), width/2, 770);
-      break;
-  }
+			if (mousePressed) {
+				if (mouseX < 1400/3.) {
+					mode = 1;
+					table.getObstacles().remove(center1);
+					table.getObstacles().remove(center2);
+				} else if (mouseX < 1400 * 2/3.) {
+					mode = 2;
+					table.getObstacles().remove(center1);
+					table.getObstacles().remove(center2);
+				} else {
+					mode = 3;
+				}
+			}
+			return;
+		case 1:
+			break;
+		case 3:
+		case 2:
+			hs1.update();
+			hs2.update();
+			hs1.display();
+			textAlign(CENTER);
+			textSize(20);
+			MField mf = new MField((hs1.getPos() - 700) / 700);
+			table.setMField(mf);
+			text("Magnetic Field Strength: " + (hs1.getPos() - 700) / 700, width/2, 720);
+			hs2.display();
+			table.getBalls().get(0).setCharge((hs2.getPos() - 700) / 700);
+			text("Cue Ball Charge: " + table.getBalls().get(0).getCharge(), width/2, 770);
+			break;
+	}
 
-  imageMode(CORNER);
-  image(tableImage, 0, 0);
-  ArrayList<Ball> arr = table.getBalls();
-  for (int i = 0; i < arr.size(); i++) {
-    arr.get(i).display();
-    arr.get(i).move();
-    for (int j = 0; j < i; j++) {
-      arr.get(i).collide(arr.get(j));
-    }
-  }
+	imageMode(CORNER);
+	image(tableImage, 0, 0);
+	ArrayList<Ball> arr = table.getBalls();
+	for (int i = 0; i < arr.size(); i++) {
+		arr.get(i).display();
+		arr.get(i).move();
+		for (int j = 0; j < i; j++) {
+			arr.get(i).collide(arr.get(j));
+		}
+	}
 
-  detectPots();
+	detectPots();
 
-  for (Obstacle i: table.getObstacles()) {
-    i.display();
-  }
+	for (Obstacle i: table.getObstacles()) {
+		i.display();
+	}
 
-  if (mouseStart != null) {
-    strokeWeight(8);
-    stroke(0);
-    line(mouseStart.getX(), mouseStart.getY(), mouseX, mouseY);
-    System.out.println("drawing line");
-  }
+	if (mode >= 2) {
+		textSize(20);
+		textAlign(CENTER);
+		if (table.getBalls().get(0).getCharge() > 0) {
+			Physics.Position ballPos = table.getBalls().get(0).getPosition();
+			fill(color(255, 0, 0));
+			text("+", ballPos.getX(), ballPos.getY());
+		} else if (table.getBalls().get(0).getCharge() < 0) {
+			Physics.Position ballPos = table.getBalls().get(0).getPosition();
+			fill(color(0, 0, 255));
+			text("-", ballPos.getX(), ballPos.getY());
+		}
+
+		textSize(50);
+		fill(255);
+		if ((hs1.getPos() - 700) / 700 < 0) {
+			text("X", 700, 350);
+			text("X", 350, 350);
+			text("X", 1050, 350);
+			text("X", 700, 450);
+			text("X", 350, 450);
+			text("X", 1050, 450);
+			text("X", 700, 250);
+			text("X", 350, 250);
+			text("X", 1050, 250);
+		} else if ((hs1.getPos() - 700) / 700 > 0) {
+			text(".", 350, 350);
+			text(".", 700, 350);
+			text(".", 1050, 350);
+			text(".", 700, 450);
+			text(".", 350, 450);
+			text(".", 1050, 450);
+			text(".", 700, 250);
+			text(".", 350, 250);
+			text(".", 1050, 250);
+		}
+	}
+
+	if (mouseStart != null) {
+		strokeWeight(8);
+		stroke(0);
+		line(mouseStart.getX(), mouseStart.getY(), mouseX, mouseY);
+		System.out.println("drawing line");
+	}
 }
 
 void defineBallPos() {
