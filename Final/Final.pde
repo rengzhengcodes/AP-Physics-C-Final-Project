@@ -24,6 +24,9 @@ void draw() {
 			arr.get(i).collide(arr.get(j));
 		}
 	}
+
+	detectPots();
+
 	for (Obstacle i: table.getObstacles()) {
 		i.display();
 	}
@@ -86,7 +89,35 @@ void defineWalls() {
 	}
 }
 
+void detectPots() {
+	int r = 30;
+	Physics.Position[] potPoses = {
+		new Physics.Position(698, 641),
+		new Physics.Position(1330, 621),
+		new Physics.Position(1330, 76),
+		new Physics.Position(698, 55),
+		new Physics.Position(66, 77),
+		new Physics.Position(66, 621)
+	};
+
+	ArrayList<Ball> potted = new ArrayList<Ball>();
+
+	for (Ball i: table.getBalls()) {
+		Physics.Position iPos = i.getPosition();
+		for (Physics.Position potPos: potPoses) {
+			if (dist(iPos.getX(), iPos.getY(), potPos.getX(), potPos.getY()) <= r) {
+				potted.add(i);
+			}
+		}
+	}
+
+	for (Ball i: potted) {
+		table.removeBall(i);
+	}
+}
+
 void mousePressed() {
+	System.out.println(mouseX + ", " + mouseY);
 	Physics.Position cuePos = table.getBall(0).getPosition();
 	if (dist(mouseX, mouseY, cuePos.getX(), cuePos.getY()) < Ball.size * Physics.pixelsPerMeter) {
 		mouseStart = new Physics.Position(mouseX, mouseY);
