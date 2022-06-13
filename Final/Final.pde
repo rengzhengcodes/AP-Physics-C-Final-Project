@@ -79,6 +79,20 @@ void draw() {
 		i.display();
 	}
 
+	if (mode >= 2) {
+		textSize(20);
+		textMode(CENTER);
+		if (table.getBalls().get(0).getCharge() > 0) {
+			Physics.Position ballPos = table.getBalls().get(0).getPosition();
+			fill(color(255, 0, 0));
+			text("+", ballPos.getX(), ballPos.getY());
+		} else if (table.getBalls().get(0).getCharge() < 0) {
+			Physics.Position ballPos = table.getBalls().get(0).getPosition();
+			fill(color(0, 0, 255));
+			text("-", ballPos.getX(), ballPos.getY());
+		}
+	}
+
 	if (mouseStart != null) {
 		strokeWeight(8);
 		stroke(0);
