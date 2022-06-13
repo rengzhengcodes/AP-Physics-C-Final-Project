@@ -4,6 +4,7 @@ Physics.Position mouseStart = null;
 PImage tableImage;
 HScrollbar hs1, hs2;
 int mode = 0;
+Obstacle center;
 
 void setup() {
  // cannot have any functions in size for some stupid reason, including numerical operators
@@ -11,7 +12,7 @@ void setup() {
 	frameRate(24);
 	defineBallPos();
 	defineWalls();
-	centerObstacle();
+	center = centerObstacle();
 	tableImage = loadImage("Pool Table.png");
 	tableImage.resize(1400, 700);
 
@@ -34,8 +35,10 @@ void draw() {
 			if (mousePressed) {
 				if (mouseX < 1400/3.) {
 					mode = 1;
+					table.getObstacles().remove(center);
 				} else if (mouseX < 1400 * 2/3.) {
 					mode = 2;
+					table.getObstacles().remove(center);
 				} else {
 					mode = 3;
 				}
@@ -135,10 +138,11 @@ void defineWalls() {
 	}
 }
 
-void centerObstacle() {
+Obstacle centerObstacle() {
 	PShape rect = createShape(RECT, 700, 350, 200, 100);
 	Obstacle obs = new Obstacle(rect, 200, 100, 700, 350);
 	table.addObstacle(obs);
+	return obs;
 }
 
 void detectPots() {
