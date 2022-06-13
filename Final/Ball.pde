@@ -90,6 +90,7 @@ public class Ball {
 		pos.move(velocity);
 		velocity.scale(1/timeunit);
 		//figure out collisions;
+		ArrayList<Obstacle> obst = table.getObstacles();
 		for (int i = 0; i < obst.size(); i++) {
 			if (i==2 || i==5 || i==7 || i==9) {
 				collidevert(obst.get(i));
