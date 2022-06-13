@@ -59,12 +59,7 @@ public class Ball {
 				velocity.add(unitDir);
 			}
 		} else {
-			if (
-				(obstacle.getXPos() - (obstacle.getWidth() / 2) <= pos.getX() &&
-				pos.getX() <= obstacle.getXPos() + (obstacle.getWidth() / 2)) &&
-				(obstacle.getYPos() - (obstacle.getLength() / 2) <= pos.getY() &&
-				pos.getY() <= obstacle.getYPos() + (obstacle.getLength() / 2))
-			)
+			if (rectCollision(obstacle))
 			{
 				velocity.scale(-1);
 				float ang = velocity.heading();
@@ -89,6 +84,29 @@ public class Ball {
 			}
 		}
 	}
+
+	boolean rectCollision(Obstacle obstacle) {
+		float ballOff = size * Physics.pixelsPerMeter / 2.;
+		float oXOff = obstacle.getLength() / 2.;
+		float oYOff = obstacle.getWidth() / 2.;
+		boolean value = false;
+
+		if (pos.getX() + ballOff >= obstacle.getXPos() - oXOff || pos.getX() - ballOff <= obstacle.getXPos() + oXOff) {
+			value = obstacle.getYPos() - oYOff >= pos.getY() + ballOff && obstacle.getYPos() + oYOff <= pos.getY() - ballOff;
+			if (value) {
+				System.out.println("hort coll");
+			}
+		} else if (pos.getY() + ballOff >= obstacle.getYPos() - oYOff || pos.getY() - ballOff <= obstacle.getYPos() + oYOff) {
+			value = obstacle.getXPos() - oXOff >= pos.getX() + ballOff && obstacle.getXPos() + oXOff <= pos.getX() - ballOff;
+
+			if (value) {
+				System.out.println("vert coll");
+			}
+		}
+
+		return value;
+	}
+
 	void move () {
 		//move a small unit
 		velocity.scale(timeunit);
