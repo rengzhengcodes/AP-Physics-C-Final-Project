@@ -33,6 +33,10 @@ public class Table {
 		return this.mfield;
 	}
 
+	public void setMField(MField mf) {
+		this.mfield = mf;
+	}
+
 	public float getFloorFCoeff() {
 		return this.floorFrictionCoeff;
 	}

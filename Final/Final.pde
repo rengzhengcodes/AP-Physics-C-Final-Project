@@ -18,6 +18,7 @@ void setup() {
 }
 
 void draw() {
+	background(255);
 	if (table.getBalls().size() == 1) {
 		imageMode(CORNER);
 		image(loadImage("win.jpg"), 0, 0);
@@ -28,9 +29,11 @@ void draw() {
 	hs1.display();
 	textAlign(CENTER);
 	textSize(20);
-	text("Magnetic Field Strength: ", width/2, 720);
+	MField mf = new MField((hs1.getPos() - 700) / 700);
+	table.setMField(mf);
+	text("Magnetic Field Strength: " + table.getMfield().mag(), width/2, 720);
 	hs2.display();
-	text("Cue Ball Charge: ", width/2, 770);
+	text("Cue Ball Charge: " + hs2.getPos(), width/2, 770);
 
 	imageMode(CORNER);
 	image(tableImage, 0, 0);

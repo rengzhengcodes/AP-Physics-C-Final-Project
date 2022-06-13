@@ -4,7 +4,7 @@ public class MField {
 	/**
 		*@param field The strength and direction of the field.
 	**/
-	
+
 	public MField(PVector field) {
 		this.field = field;
 	}
@@ -14,6 +14,10 @@ public class MField {
 	**/
 	public MField(float strength) {
 		this(new PVector(0, 0, strength));
+	}
+
+	public float mag() {
+		return this.field.mag();
 	}
 
 	public Physics.Force affectCharge(Physics.Velocity v, float charge) {
