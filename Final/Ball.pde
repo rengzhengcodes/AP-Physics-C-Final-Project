@@ -133,7 +133,7 @@ public class Ball {
 		//accelerate due to magnetic field
 		Physics.Force magnet = magnet();
 		Physics.Acceleration accel2 = magnet.accel(mass);
-		accel2.scale(1/timeunit);
+		accel2.scale(timeunit);
 		velocity.accelerate(accel2);
 	}
 
