@@ -60,10 +60,10 @@ public class Ball {
 			}
 		} else {
 			if (
-				(obstacle.getXPos() - (obstacle.getWidth() / 2) <= pos.getX() &&
-				pos.getX() <= obstacle.getXPos() + (obstacle.getWidth() / 2)) &&
-				(obstacle.getYPos() - (obstacle.getLength() / 2) <= pos.getY() &&
-				pos.getY() <= obstacle.getYPos() + (obstacle.getLength() / 2))
+				(obstacle.getXPos() - (obstacle.getLength()/2) - size <= pos.getX() &&
+				pos.getX() <= obstacle.getXPos() + (obstacle.getLength()/2) + size)) &&
+				(obstacle.getYPos() - (obstacle.getWidth()/2 - size) <= pos.getY() &&
+				pos.getY() <= obstacle.getYPos() + (obstacle.getWidth()/2) + size)
 			)
 			{
 				velocity.scale(-1);
