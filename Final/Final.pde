@@ -33,7 +33,8 @@ void draw() {
 	table.setMField(mf);
 	text("Magnetic Field Strength: " + table.getMfield().mag(), width/2, 720);
 	hs2.display();
-	text("Cue Ball Charge: " + hs2.getPos(), width/2, 770);
+	table.getBalls().get(0).setCharge((hs2.getPos() - 700) / 7000);
+	text("Cue Ball Charge: " + table.getBalls().get(0).getCharge(), width/2, 770);
 
 	imageMode(CORNER);
 	image(tableImage, 0, 0);

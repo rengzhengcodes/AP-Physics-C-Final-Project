@@ -172,4 +172,12 @@ public class Ball {
 	void setVelocity(Physics.Velocity v) {
 		this.velocity = v;
 	}
+
+	void setCharge(float charge) {
+		this.charge = charge;
+	}
+
+	float getCharge() {
+		return this.charge;
+	}
 }
