@@ -88,28 +88,6 @@ public class Ball {
 		}
 	}
 
-	boolean rectCollision(Obstacle obstacle) {
-		float ballOff = size * Physics.pixelsPerMeter / 2.;
-		float oXOff = obstacle.getLength() / 2.;
-		float oYOff = obstacle.getWidth() / 2.;
-		boolean value = false;
-
-		if (pos.getX() + ballOff >= obstacle.getXPos() - oXOff || pos.getX() - ballOff <= obstacle.getXPos() + oXOff) {
-			value = obstacle.getYPos() - oYOff >= pos.getY() + ballOff && obstacle.getYPos() + oYOff <= pos.getY() - ballOff;
-			if (value) {
-				System.out.println("hort coll");
-			}
-		} else if (pos.getY() + ballOff >= obstacle.getYPos() - oYOff || pos.getY() - ballOff <= obstacle.getYPos() + oYOff) {
-			value = obstacle.getXPos() - oXOff >= pos.getX() + ballOff && obstacle.getXPos() + oXOff <= pos.getX() - ballOff;
-
-			if (value) {
-				System.out.println("vert coll");
-			}
-		}
-
-		return value;
-	}
-
 	void move () {
 		//move a small unit
 		velocity.scale(timeunit);
