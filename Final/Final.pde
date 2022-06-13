@@ -10,6 +10,7 @@ void setup() {
 	frameRate(24);
 	defineBallPos();
 	defineWalls();
+	centerObstacle();
 	tableImage = loadImage("Pool Table.png");
 	tableImage.resize(1400, 700);
 
@@ -109,6 +110,12 @@ void defineWalls() {
 			table.addObstacle(obs);
 		}
 	}
+}
+
+void centerObstacle() {
+	PShape rect = createShape(RECT, 700, 350, 200, 100);
+	Obstacle obs = new Obstacle(rect, 200, 100, 700, 350);
+	table.addObstacle(obs);
 }
 
 void detectPots() {
