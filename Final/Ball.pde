@@ -41,8 +41,8 @@ public class Ball {
 			other_switch.scale(1*other.velocity.getVec().dot(dirVector.getVec()));
 			velocity.add(self_switch);
 			other.velocity.add(other_switch);
-			self_switch.scale(-1);
-			other_switch.scale(-1);
+			self_switch.scale(-0.7);
+			other_switch.scale(-0.7);
 			velocity.add(other_switch);
 			other.velocity.add(self_switch);
 		}
