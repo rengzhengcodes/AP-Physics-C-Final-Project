@@ -16,6 +16,7 @@ void setup() {
 void draw() {
 	imageMode(CORNER);
 	image(tableImage, 0, 0);
+	ArrayList<Ball> arr = table.getBalls();
 	for (int i = 0; i < arr.size(); i++) {
 		arr.get(i).display();
 		arr.get(i).move();
