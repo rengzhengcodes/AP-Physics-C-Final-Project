@@ -3,6 +3,7 @@ Table table = new Table(1);
 Physics.Position mouseStart = null;
 PImage tableImage;
 HScrollbar hs1, hs2;
+int mode = 2;
 
 void setup() {
  // cannot have any functions in size for some stupid reason, including numerical operators
@@ -24,17 +25,23 @@ void draw() {
 		image(loadImage("win.jpg"), 0, 0);
 		return;
 	}
-	hs1.update();
-	hs2.update();
-	hs1.display();
-	textAlign(CENTER);
-	textSize(20);
-	MField mf = new MField((hs1.getPos() - 700) / 700);
-	table.setMField(mf);
-	text("Magnetic Field Strength: " + table.getMfield().mag(), width/2, 720);
-	hs2.display();
-	table.getBalls().get(0).setCharge((hs2.getPos() - 700) / 700);
-	text("Cue Ball Charge: " + table.getBalls().get(0).getCharge(), width/2, 770);
+	switch (mode) {
+		case 1:
+			break;
+		case 2:
+			hs1.update();
+			hs2.update();
+			hs1.display();
+			textAlign(CENTER);
+			textSize(20);
+			MField mf = new MField((hs1.getPos() - 700) / 700);
+			table.setMField(mf);
+			text("Magnetic Field Strength: " + table.getMfield().mag(), width/2, 720);
+			hs2.display();
+			table.getBalls().get(0).setCharge((hs2.getPos() - 700) / 700);
+			text("Cue Ball Charge: " + table.getBalls().get(0).getCharge(), width/2, 770);
+			break;
+	}
 
 	imageMode(CORNER);
 	image(tableImage, 0, 0);
